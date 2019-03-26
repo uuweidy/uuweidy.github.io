@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>My First Blog | uuweidy&#39;s world</title>
+    <title>KMP算法学习总结 | uuweidy&#39;s world</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="uuweidy">
     
 
     
-    <meta name="description" content="今天我正式地建立的我的博客。我会尽可能的更新这个博客（也许每周一次）。  另：今天是十二月二十五日，祝每一个码农圣诞节快乐！   Today I builded my blog.I’ll update this blog as often as I can(How about once a week?).  Besides,today is Dec 25th,Merry Christmas t">
-<meta name="keywords" content="日常生活">
+    <meta name="description" content="之前在数据结构课的时候我就已经接触到了kmp算法，但是由于教材写的十分模糊，以及并没有怎么使用过这种算法，也就渐渐地把它放在一边了。这次重新拿起书来复习数据结构，正好拿出精力来搞懂它。 本文部分内容参考《从头到尾彻底理解KMP（2014年8月22日版）》 地址：https://blog.csdn.net/v_july_v/article/details/7041827">
+<meta name="keywords" content="学习笔记,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My First Blog">
-<meta property="og:url" content="http://yoursite.com/2017/12/25/My-First-Blog/index.html">
+<meta property="og:title" content="KMP算法学习总结">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/KMP算法学习总结/index.html">
 <meta property="og:site_name" content="uuweidy&#39;s world">
-<meta property="og:description" content="今天我正式地建立的我的博客。我会尽可能的更新这个博客（也许每周一次）。  另：今天是十二月二十五日，祝每一个码农圣诞节快乐！   Today I builded my blog.I’ll update this blog as often as I can(How about once a week?).  Besides,today is Dec 25th,Merry Christmas t">
+<meta property="og:description" content="之前在数据结构课的时候我就已经接触到了kmp算法，但是由于教材写的十分模糊，以及并没有怎么使用过这种算法，也就渐渐地把它放在一边了。这次重新拿起书来复习数据结构，正好拿出精力来搞懂它。 本文部分内容参考《从头到尾彻底理解KMP（2014年8月22日版）》 地址：https://blog.csdn.net/v_july_v/article/details/7041827">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-27T11:52:18.131Z">
+<meta property="og:updated_time" content="2019-03-26T08:32:43.418Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My First Blog">
-<meta name="twitter:description" content="今天我正式地建立的我的博客。我会尽可能的更新这个博客（也许每周一次）。  另：今天是十二月二十五日，祝每一个码农圣诞节快乐！   Today I builded my blog.I’ll update this blog as often as I can(How about once a week?).  Besides,today is Dec 25th,Merry Christmas t">
+<meta name="twitter:title" content="KMP算法学习总结">
+<meta name="twitter:description" content="之前在数据结构课的时候我就已经接触到了kmp算法，但是由于教材写的十分模糊，以及并没有怎么使用过这种算法，也就渐渐地把它放在一边了。这次重新拿起书来复习数据结构，正好拿出精力来搞懂它。 本文部分内容参考《从头到尾彻底理解KMP（2014年8月22日版）》 地址：https://blog.csdn.net/v_july_v/article/details/7041827">
 
     
     <link rel="alternative" href="/atom.xml" title="uuweidy&#39;s world" type="application/atom+xml">
@@ -82,14 +82,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/12/25/My-First-Blog/" title="My First Blog" itemprop="url">My First Blog</a>
+      <a href="/2019/03/26/KMP算法学习总结/" title="KMP算法学习总结" itemprop="url">KMP算法学习总结</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="uuweidy" target="_blank" itemprop="author">uuweidy</a>
 		
   <p class="article-time">
-    <time datetime="2017-12-25T12:43:02.000Z" itemprop="datePublished"> 发表于 2017-12-25</time>
+    <time datetime="2019-03-26T07:23:14.000Z" itemprop="datePublished"> 发表于 2019-03-26</time>
     
   </p>
 </header>
@@ -98,13 +98,63 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法介绍"><span class="toc-number">1.</span> <span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法流程"><span class="toc-number">2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通过代码递推next数组"><span class="toc-number">3.</span> <span class="toc-text">通过代码递推next数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#next的递归定义："><span class="toc-number">3.1.</span> <span class="toc-text">next的递归定义：</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>  今天我正式地建立的我的博客。我会尽可能的更新这个博客（也许每周一次）。<br>  另：今天是十二月二十五日，祝每一个码农圣诞节快乐！</p>
-<p>  Today I builded my blog.I’ll update this blog as often as I can(How about once a week?).<br>  Besides,today is Dec 25th,Merry Christmas to every coder!</p>
-<p>  今日、僕は自分のブローグをビルドしました。僕はできるだけこのブローグをアプデートします（多分週で一回）。<br>  それで、今日は十二月二十五日、皆さん(´∇｀)＜Merry☆Christmas！</p>
+		<blockquote>
+<p>之前在数据结构课的时候我就已经接触到了kmp算法，但是由于教材写的十分模糊，以及并没有怎么使用过这种算法，也就渐渐地把它放在一边了。这次重新拿起书来复习数据结构，正好拿出精力来搞懂它。</p>
+<p>本文部分内容参考《从头到尾彻底理解KMP（2014年8月22日版）》</p>
+<p>地址：<a href="https://blog.csdn.net/v_july_v/article/details/7041827" target="_blank" rel="noopener">https://blog.csdn.net/v_july_v/article/details/7041827</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="算法介绍"><a href="#算法介绍" class="headerlink" title="算法介绍"></a>算法介绍</h1><p>Knuth-Morris-Pratt 字符串查找算法（基于特征分析的快速模式匹配算法），简称为 “KMP算法”，常用于在一个文本串S内查找一个模式串P 的出现位置，这个算法由Donald Knuth、Vaughan Pratt、James H. Morris三人于1977年联合发表，故取这3人的姓氏命名此算法。</p>
+<p>朴素的模式匹配算法最差的情况需要O(|T||P|)的代价，（其中|T|、|P|分别为目标串和模式串的长度）而且其实模式串每次右移的位数与目标串无关，仅与模式本身相关。</p>
+<p>当某次比较出现P[i]!=T[j]时，已经说明有P[0:i-1]==T[j-i:j-1]，即模式的前i-1个字符已经匹配成功。</p>
+<p>BBC  ABCDAB  ABCDABCDABDE</p>
+<p>​         ABCDABD</p>
+<p>上面的模式串的前6位已经匹配成功，而第7位匹配失败。此时如果模式串向右移动4位（即把模式串的开头移动到原先第二个AB所在的位置），既能保证不会丢失结果，也不会产生回溯（也就是说，对于目标串T来说，参数j不会变小）</p>
+<p>KMP算法的核心思想就是利用之前已经部分匹配这个有效信息，保持目标串的j不回溯，通过修改模式串的i的位置，让模式串尽量地移动到有效的位置。</p>
+<h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h1><p>对于参数i，j有：</p>
+<ul>
+<li><p>若i==-1||T[i]==P[j]：i++,j++，继续匹配下一个字符</p>
+</li>
+<li><p>若i!=-1&amp;&amp;T[i]!=P[j]：i=next[i]，即匹配失败时让模式串向右移动i-next[i]位</p>
+<p>  next数组的意义：代表当前字符之前的字符串中，有多大长度的相同前缀后缀。例如如果next[i]=k，代表i之前的字符串中有最大长度为k的相同前缀后缀。</p>
+<p>  此也意味着在某个字符失配时，该字符对应的next值会告诉你下一步匹配中，模式串应该跳到哪个位置（跳到next[i]的位置）。如果next[i]等于0或-1，则跳到模式串的开头字符，若next[i]=k且k&gt;0，代表下次匹配跳到i之前的某个字符，而不是跳到开头，且具体跳过了k个字符。</p>
+</li>
+</ul>
+<ol>
+<li><p>寻找前缀后缀最长公共元素长度</p>
+<p>| 模式串   | a    | b    | a    | b    |<br>| ——– | —- | —- | —- | —- |<br>| 最大长度 | 0    | 0    | 1    | 2    |</p>
+</li>
+<li><p>求next数组（某个字符对应的next值，就是看这个字符之前的字符串中有多大长度的相同前缀后缀）</p>
+<p>只需将最大长度数组向右挪一位，并将初值置为-1即可。</p>
+<p>| 模式串 | a    | b    | a    | b    |<br>| —— | —- | —- | —- | —- |<br>| next   | -1   | 0    | 0    | 1    |</p>
+</li>
+<li><p>根据next数组进行匹配</p>
+</li>
+</ol>
+<h1 id="通过代码递推next数组"><a href="#通过代码递推next数组" class="headerlink" title="通过代码递推next数组"></a>通过代码递推next数组</h1><h2 id="next的递归定义："><a href="#next的递归定义：" class="headerlink" title="next的递归定义："></a>next的递归定义：</h2><ul>
+<li><p>如果对于值k，已有p0 p1, …, pk-1 = pj-k pj-k+1, …, pj-1，相当于next[j] = k。</p>
+</li>
+<li><p>对于P的前j+1个序列字符：</p>
+<ul>
+<li><p>若p[k] == p[j]，则next[j + 1 ] = next [j] + 1 = k + 1；</p>
+</li>
+<li><p>若p[k ] ≠ p[j]，如果此时p[ next[k] ] == p[j ]，则next[ j + 1 ] =  next[k] + 1，否则继续递归前缀索引k = next[k]，而后重复此过程。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>k = next[k]这一步骤实际相当于是模式串P在使用已知的next数组在进行自匹配，直到找到一个匹配的结果或字符串结束为止。</p>
+<p><strong><em>以下是我的解释：</em></strong></p>
+<p>假设已知一个模式串的P[0:n-1]中，前a位和后a位是相等的，即P[0:a-1]==P[n-a:n-1]</p>
+<p>那么当P[a]!=P[n]时，若对于P[n]存在一个长度为b的匹配结果（即P[0:b-1]==P[n-b:n-1]），则可以推出：</p>
+<p>​    P[0:b-1] == P[a-b:a-1] == P[n-a:n-a+b-1] == P[n-b:n-1]</p>
+<p>​    (由对称性得出的结论)</p>
+<p>也就是说，我们只需要比较P[b]与P[n]是否相等就可以了。</p>
+<p>从以上思路可以轻易得出b的值就是next[a]，即模式串前a位的最大前缀后缀公共子串长度。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -113,7 +163,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/日常生活/">日常生活</a>
+  <span></span> <a href="/tags/学习笔记/">学习笔记</a><a href="/tags/算法/">算法</a>
   </div>
 
 </div>
@@ -122,7 +172,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/12/25/My-First-Blog/" data-title="My First Blog | uuweidy&#39;s world" data-tsina="" class="share clearfix">
+	  <div data-url="http://yoursite.com/2019/03/26/KMP算法学习总结/" data-title="KMP算法学习总结 | uuweidy&#39;s world" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -135,19 +185,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/12/27/为以后做的准备/" title="为以后做的准备">
-  <strong>上一篇：</strong><br/>
-  <span>
-  为以后做的准备</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/12/25/hello-world/"  title="Hello World">
+<a href="/2019/01/04/2018下半年总结/"  title="2018下半年总结">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>2018下半年总结
 </span>
 </a>
 </div>
@@ -164,7 +206,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法介绍"><span class="toc-number">1.</span> <span class="toc-text">算法介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法流程"><span class="toc-number">2.</span> <span class="toc-text">算法流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通过代码递推next数组"><span class="toc-number">3.</span> <span class="toc-text">通过代码递推next数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#next的递归定义："><span class="toc-number">3.1.</span> <span class="toc-text">next的递归定义：</span></a></li></ol></li></ol>
  
   </div>
 
