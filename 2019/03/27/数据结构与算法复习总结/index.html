@@ -1,0 +1,647 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>数据结构与算法复习总结 | uuweidy&#39;s world</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="uuweidy">
+    
+
+    
+    <meta name="description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 未完成，持续更新（目前进度：平衡二叉树）">
+<meta name="keywords" content="学习笔记,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法复习总结">
+<meta property="og:url" content="http://yoursite.com/2019/03/27/数据结构与算法复习总结/index.html">
+<meta property="og:site_name" content="uuweidy&#39;s world">
+<meta property="og:description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 未完成，持续更新（目前进度：平衡二叉树）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-27T11:26:55.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构与算法复习总结">
+<meta name="twitter:description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 未完成，持续更新（目前进度：平衡二叉树）">
+
+    
+    <link rel="alternative" href="/atom.xml" title="uuweidy&#39;s world" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="uuweidy&#39;s world" title="uuweidy&#39;s world"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="uuweidy&#39;s world">uuweidy&#39;s world</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/03/27/数据结构与算法复习总结/" title="数据结构与算法复习总结" itemprop="url">数据结构与算法复习总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="uuweidy" target="_blank" itemprop="author">uuweidy</a>
+		
+  <p class="article-time">
+    <time datetime="2019-03-27T06:20:55.000Z" itemprop="datePublished"> 发表于 2019-03-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结点的数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">结点的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构的分类"><span class="toc-number">1.2.</span> <span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的存储结构"><span class="toc-number">1.3.</span> <span class="toc-text">数据的存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法性质"><span class="toc-number">1.4.</span> <span class="toc-text">算法性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析：大O表示法"><span class="toc-number">1.5.</span> <span class="toc-text">算法分析：大O表示法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表"><span class="toc-number">2.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序表"><span class="toc-number">2.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局限"><span class="toc-number">2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-number">2.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单链表"><span class="toc-number">2.2.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-1"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限-1"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双链表"><span class="toc-number">2.2.2.</span> <span class="toc-text">双链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环链表"><span class="toc-number">2.2.3.</span> <span class="toc-text">循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表的比较"><span class="toc-number">2.3.</span> <span class="toc-text">线性表的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈LIFO"><span class="toc-number">2.4.</span> <span class="toc-text">栈LIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列FIFO"><span class="toc-number">2.5.</span> <span class="toc-text">队列FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">2.6.</span> <span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">3.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">3.1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.2.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">3.3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-number">3.3.1.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树"><span class="toc-number">3.4.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">3.4.2.</span> <span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">3.5.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建：筛选法"><span class="toc-number">3.5.1.</span> <span class="toc-text">构建：筛选法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">3.5.2.</span> <span class="toc-text">优先队列*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#huffman编码树"><span class="toc-number">3.6.</span> <span class="toc-text">huffman编码树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建方法"><span class="toc-number">3.6.1.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成树"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的存储"><span class="toc-number">4.0.2.</span> <span class="toc-text">图的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图的遍历"><span class="toc-number">4.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索（DFS）"><span class="toc-number">4.1.1.</span> <span class="toc-text">深度优先搜索（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-4"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索（BFS）"><span class="toc-number">4.1.2.</span> <span class="toc-text">广度优先搜索（BFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-5"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小生成树"><span class="toc-number">4.2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prim算法"><span class="toc-number">4.2.1.</span> <span class="toc-text">prim算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-6"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kruskal算法"><span class="toc-number">4.2.2.</span> <span class="toc-text">kruskal算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-7"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最短路径"><span class="toc-number">4.3.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单源最短路：Dijkstra算法"><span class="toc-number">4.3.1.</span> <span class="toc-text">单源最短路：Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-8"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。</p>
+<p>未完成，持续更新（目前进度：平衡二叉树）</p>
+</blockquote>
+<a id="more"></a>
+<p>[TOC]</p>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><ul>
+<li>数据的逻辑结构由<code>数据结点</code>(Node)和连接两个结点的边<code>二元关系</code>组成</li>
+</ul>
+<h2 id="结点的数据类型"><a href="#结点的数据类型" class="headerlink" title="结点的数据类型"></a>结点的数据类型</h2><ul>
+<li>整数类型</li>
+<li>实数类型</li>
+<li>布尔类型</li>
+<li>字符类型</li>
+<li>指针类型</li>
+<li>其它复合类型</li>
+</ul>
+<h2 id="结构的分类"><a href="#结构的分类" class="headerlink" title="结构的分类"></a>结构的分类</h2><ul>
+<li>线性结构：每个结点在关系r上最多只有一个前驱结点和一个后继结点</li>
+<li>树形结构：除了根结点以外，所有结点均有且只有唯一的前驱结点</li>
+<li>图结构（网络结构）：对结点的前驱或后继数目无约束</li>
+</ul>
+<h2 id="数据的存储结构"><a href="#数据的存储结构" class="headerlink" title="数据的存储结构"></a>数据的存储结构</h2><ul>
+<li>顺序方法：把一组结点存放在一片地址相邻的存储单元中。</li>
+<li><p>链接方法：在结点的存储结构中附加指针域来存储结点间的逻辑关系。</p>
+</li>
+<li><p>索引方法：通过建造一个由数据域Z映射到存储地址域D是索引函数，形成一个存储了一组指针的索引表，每个指针指向存储区域的一个数据结点。</p>
+<ul>
+<li>提高了检索效率</li>
+</ul>
+</li>
+<li>散列方法：利用散列函数进行索引值的计算，然后通过索引表求出结点的指针地址。</li>
+</ul>
+<h2 id="算法性质"><a href="#算法性质" class="headerlink" title="算法性质"></a>算法性质</h2><ul>
+<li>通用性</li>
+<li>有效性</li>
+<li>确定性</li>
+<li>有穷性</li>
+</ul>
+<h2 id="算法分析：大O表示法"><a href="#算法分析：大O表示法" class="headerlink" title="算法分析：大O表示法"></a>算法分析：大O表示法</h2><p>给出了函数增长率的上限</p>
+<p>O(1) &lt; O(log(n)) &lt; O(n) &lt; O(nlog(n)) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)</p>
+<h1 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h1><p>存储结构主要有两类：定长的顺序存储结构(顺序表)和变长的线性存储结构(链表)</p>
+<h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ol>
+<li>插入：O(n)</li>
+<li>删除：O(n)</li>
+<li>按位置读取元素：O(1)</li>
+<li>按内容查找：O(n)</li>
+</ol>
+<h3 id="局限"><a href="#局限" class="headerlink" title="局限"></a>局限</h3><ul>
+<li>长度无法改变</li>
+<li>插入和删除耗时长</li>
+</ul>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h3><ul>
+<li>使用带头结点的单链表有以下好处：<ul>
+<li>对首结点的插入和删除不需要做特殊处理</li>
+<li>对空链表不需要特殊处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><ol>
+<li>检索：O(n)</li>
+<li>插入和删除：本身只需O(1)，但是需要O(n)的定位操作</li>
+</ol>
+<h4 id="局限-1"><a href="#局限-1" class="headerlink" title="局限"></a>局限</h4><p>指针域仅指向后继结点，不能有效找到其前驱结点</p>
+<h3 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h3><h3 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h3><p>从循环链表的任一点出发，都能访问到其他结点</p>
+<h2 id="线性表的比较"><a href="#线性表的比较" class="headerlink" title="线性表的比较"></a>线性表的比较</h2><ul>
+<li>顺序表：<ul>
+<li>存储利用率高</li>
+<li>存取操作方便</li>
+</ul>
+</li>
+<li>链表<ul>
+<li>无需事先定义最大长度</li>
+<li>插入和删除操作方便</li>
+</ul>
+</li>
+</ul>
+<h2 id="栈LIFO"><a href="#栈LIFO" class="headerlink" title="栈LIFO"></a>栈LIFO</h2><p>所有操作限定在线性表的一端进行，每次取出的是最后进栈的元素。</p>
+<h3 id="时间复杂度-2"><a href="#时间复杂度-2" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ol>
+<li>插入和删除：O(1)</li>
+</ol>
+<h2 id="队列FIFO"><a href="#队列FIFO" class="headerlink" title="队列FIFO"></a>队列FIFO</h2><p>元素只能从表的一端插入，从表的另一端删除</p>
+<h3 id="时间复杂度-3"><a href="#时间复杂度-3" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
+<li><p>当使用顺序队列时，出队与入队其中一个为O(n)，一个为O(1)</p>
+</li>
+<li><p>使用循环队列时，均为O(1)</p>
+</li>
+</ul>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>KMP算法</p>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="基本性质"><a href="#基本性质" class="headerlink" title="基本性质"></a>基本性质</h2><ol>
+<li>结点数等于所有结点的度数+1</li>
+<li>度为m 的树，其第i 层上至多有m^i 个结点（根结点为第0层）</li>
+<li>高度为h ，度为m 的树至多有  (m^h - 1)/(m - 1)个结点</li>
+<li>具有n 个结点的度为m 的树，其最小高度为（向上取整）log_m(n(m-1)+1)</li>
+</ol>
+<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><ul>
+<li><p>定义：所有结点的度小于等于2的树称为二叉树</p>
+</li>
+<li><p>二叉树是有序树（左右子树的次序不可颠倒）</p>
+</li>
+<li><p>特殊的二叉树</p>
+<ul>
+<li>完全二叉树：从上到下从左到右依次填充</li>
+<li>满二叉树：每一层都填充满</li>
+<li>扩充二叉树：把原二叉树的所有结点中出现空子树的位置上都增加特殊的空树叶得到的二叉树<ul>
+<li><em>外部结点（新增加的空树叶）的数量等于内部结点（原来二叉树中的结点）的数量加1</em></li>
+<li><em>外部路径长度（从根结点到每个外部结点的路径长度之和）等于内部路径长度加两倍的内部结点数量</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
+<li>度为0的结点比度为2的结点多一个</li>
+<li>第i 层上至多有2^i 个结点</li>
+<li>高度为h 的二叉树至多有 2^h - 1个结点</li>
+<li>非空满二叉树的叶子结点的数量等于分支结点的数量加1</li>
+<li>对一个有n 个结点的完全二叉树的结点按层从0编号，则结点i的双亲结点的编号为(i-1)/2，左子结点的编号为 2i+1，右子结点的编号为 2i+2</li>
+</ul>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><ul>
+<li>广度优先遍历（子结点依次进队，然后访问出队的结点）</li>
+<li>深度优先遍历：<ul>
+<li>前序遍历（访问该结点，把右子树的根入栈，遍历左子树，无左子树时弹栈）</li>
+<li>中序遍历（把该结点压栈，遍历左子树，无左子树时弹栈并访问，遍历右子树）</li>
+<li>后序遍历（左子结点依次压栈，读取栈顶元素，访问右子树，右子树被访问过时弹栈访问该结点）</li>
+</ul>
+</li>
+</ul>
+<p>给定前序中序或者中序后序遍历序列可以唯一确定二叉树</p>
+<h2 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h2><p>定义：左子树的关键码小于本身的关键码小于右子树的关键码</p>
+<p>中序遍历二叉搜索树可以得到从小到大排序的关键码序列</p>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><ol>
+<li>无子树：直接删除</li>
+<li>有一棵子树：用子树的根结点替换</li>
+<li>有两棵子树：合并删除（用左子树的最右边接右子树的根）或复制删除（左子树最右边的点替换删除的点，将其左子树变为它的父节点的右子树）</li>
+</ol>
+<h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>检索插入删除的时间复杂度均为：O(log_2(n)）</p>
+<p>定义：左子树和右子树的高度差不超过1</p>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><p>左单旋、右单旋、左右双旋、右左双旋</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>核心：子树高度不改变时才停止回溯</p>
+<hr>
+<p>对于一个有n个结点的avl树，高度不超过1.5log_2 (n+1)</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>定义：每个结点的值都大于（小于）其子结点的值的完全二叉树</p>
+<p>插入和删除是O(log(n))的</p>
+<h3 id="构建：筛选法"><a href="#构建：筛选法" class="headerlink" title="构建：筛选法"></a>构建：筛选法</h3><p><strong>O(n)</strong></p>
+<p>先所有关键码放入一颗完全二叉树中，之后从第一个具有孩子的结点n/2-1（向下取整）开始，依次调整以它为根的子树，直到根结点被调整结束。</p>
+<h3 id="优先队列"><a href="#优先队列" class="headerlink" title="优先队列*"></a>优先队列*</h3><p>能被删除和访问的是具有最高优先级的元素，可以通过最大堆来实现</p>
+<h2 id="huffman编码树"><a href="#huffman编码树" class="headerlink" title="huffman编码树"></a>huffman编码树</h2><p>又称最优二叉树，是加权路径长度最短的二叉树</p>
+<h3 id="构建方法"><a href="#构建方法" class="headerlink" title="构建方法"></a>构建方法</h3><p>从结点集合中选取两棵权值最小的树作为左右子树来构造一棵新的二叉树，且新的二叉树的权值为左右子树根结点权值之和。</p>
+<p>将这两棵树删除，把新的二叉树加入F中</p>
+<p>重复以上步骤直至集合中只有一棵树</p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p>常用图的基本类型：无向图，有向图，带权图</p>
+<h3 id="生成树"><a href="#生成树" class="headerlink" title="生成树"></a>生成树</h3><p>对于连通图G，若连通子图G’包含G中所有顶点和一部分边，且不形成回路，则G’是G的生成树。</p>
+<p>生成树不唯一</p>
+<h3 id="图的存储"><a href="#图的存储" class="headerlink" title="图的存储"></a>图的存储</h3><ul>
+<li>邻接矩阵</li>
+<li>邻接表/逆邻接表</li>
+<li>十字链表</li>
+<li>邻接多重表</li>
+</ul>
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="深度优先搜索（DFS）"><a href="#深度优先搜索（DFS）" class="headerlink" title="深度优先搜索（DFS）"></a>深度优先搜索（DFS）</h3><p>使用栈实现</p>
+<h4 id="时间复杂度-4"><a href="#时间复杂度-4" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>对于邻接矩阵所需时间为O(n^2)，对于邻接表的复杂度为O(n+e)</p>
+<h3 id="广度优先搜索（BFS）"><a href="#广度优先搜索（BFS）" class="headerlink" title="广度优先搜索（BFS）"></a>广度优先搜索（BFS）</h3><p>使用队列实现</p>
+<h4 id="时间复杂度-5"><a href="#时间复杂度-5" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>与DFS相同</p>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>对于带权无向图，使得各边的权重之和最小的生成树</p>
+<h3 id="prim算法"><a href="#prim算法" class="headerlink" title="prim算法"></a>prim算法</h3><p>寻找一端已在集合中而另一端不在集合中的边的最小边，并将其加入集合</p>
+<h4 id="时间复杂度-6"><a href="#时间复杂度-6" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>O(n^2)，与图中的边数无关，因此适合稠密图</p>
+<h3 id="kruskal算法"><a href="#kruskal算法" class="headerlink" title="kruskal算法"></a>kruskal算法</h3><p>确定权值最小的边（最小堆）；判断边的两个端点是否在同一个连通分量中（并查集）；不是，则合并两个连同分量。</p>
+<h4 id="时间复杂度-7"><a href="#时间复杂度-7" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>向堆中插入了e条边：O(elog(e))</p>
+<p>从堆中最多删除e条边：O(elog(e))</p>
+<p>最多2e次查找操作：O(e)</p>
+<p>最多e次合并操作：O(e)</p>
+<p>所以总时间复杂度是O(elog(e))，适用于构造稀疏图的最小生成树</p>
+<h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><h3 id="单源最短路：Dijkstra算法"><a href="#单源最短路：Dijkstra算法" class="headerlink" title="单源最短路：Dijkstra算法"></a>单源最短路：Dijkstra算法</h3><p>按照路径长度递增的次序产生到各顶点最短路径的贪心算法</p>
+<p>从dis数组中选取最小值，将对应端点加入S中；从这个端点出发且终点不在S中的边中选出最小的边，更新最短路；重复直至S包含了所有端点</p>
+<h4 id="时间复杂度-8"><a href="#时间复杂度-8" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>选择最短dis时如果用简单选择法，复杂度为O(n^2)；如果用最小堆，复杂度为O(nlog(n))</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/学习笔记/">学习笔记</a><a href="/tags/算法/">算法</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2019/03/27/数据结构与算法复习总结/" data-title="数据结构与算法复习总结 | uuweidy&#39;s world" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/03/26/KMP算法学习总结/"  title="KMP算法学习总结">
+ <strong>下一篇：</strong><br/> 
+ <span>KMP算法学习总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结点的数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">结点的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构的分类"><span class="toc-number">1.2.</span> <span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的存储结构"><span class="toc-number">1.3.</span> <span class="toc-text">数据的存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法性质"><span class="toc-number">1.4.</span> <span class="toc-text">算法性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析：大O表示法"><span class="toc-number">1.5.</span> <span class="toc-text">算法分析：大O表示法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表"><span class="toc-number">2.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序表"><span class="toc-number">2.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局限"><span class="toc-number">2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-number">2.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单链表"><span class="toc-number">2.2.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-1"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限-1"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双链表"><span class="toc-number">2.2.2.</span> <span class="toc-text">双链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环链表"><span class="toc-number">2.2.3.</span> <span class="toc-text">循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表的比较"><span class="toc-number">2.3.</span> <span class="toc-text">线性表的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈LIFO"><span class="toc-number">2.4.</span> <span class="toc-text">栈LIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列FIFO"><span class="toc-number">2.5.</span> <span class="toc-text">队列FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">2.6.</span> <span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">3.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">3.1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.2.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">3.3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-number">3.3.1.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树"><span class="toc-number">3.4.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">3.4.2.</span> <span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">3.5.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建：筛选法"><span class="toc-number">3.5.1.</span> <span class="toc-text">构建：筛选法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">3.5.2.</span> <span class="toc-text">优先队列*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#huffman编码树"><span class="toc-number">3.6.</span> <span class="toc-text">huffman编码树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建方法"><span class="toc-number">3.6.1.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成树"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的存储"><span class="toc-number">4.0.2.</span> <span class="toc-text">图的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图的遍历"><span class="toc-number">4.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索（DFS）"><span class="toc-number">4.1.1.</span> <span class="toc-text">深度优先搜索（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-4"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索（BFS）"><span class="toc-number">4.1.2.</span> <span class="toc-text">广度优先搜索（BFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-5"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小生成树"><span class="toc-number">4.2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prim算法"><span class="toc-number">4.2.1.</span> <span class="toc-text">prim算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-6"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kruskal算法"><span class="toc-number">4.2.2.</span> <span class="toc-text">kruskal算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-7"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最短路径"><span class="toc-number">4.3.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单源最短路：Dijkstra算法"><span class="toc-number">4.3.1.</span> <span class="toc-text">单源最短路：Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-8"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/学习笔记/" title="学习笔记">学习笔记<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/总结/" title="总结">总结<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日常生活/" title="日常生活">日常生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/胡言乱语/" title="胡言乱语">胡言乱语<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="uuweidy">uuweidy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
