@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 未完成，持续更新（目前进度：dijkstra算法）">
+    <meta name="description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 已完成">
 <meta name="keywords" content="学习笔记,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法复习总结">
 <meta property="og:url" content="http://yoursite.com/2019/03/27/数据结构与算法复习总结/index.html">
 <meta property="og:site_name" content="uuweidy&#39;s world">
-<meta property="og:description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 未完成，持续更新（目前进度：dijkstra算法）">
+<meta property="og:description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 已完成">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-27T11:28:50.253Z">
+<meta property="og:updated_time" content="2019-04-08T07:15:10.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法复习总结">
-<meta name="twitter:description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 未完成，持续更新（目前进度：dijkstra算法）">
+<meta name="twitter:description" content="本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。 已完成">
 
     
     <link rel="alternative" href="/atom.xml" title="uuweidy&#39;s world" type="application/atom+xml">
@@ -98,16 +98,15 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结点的数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">结点的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构的分类"><span class="toc-number">1.2.</span> <span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的存储结构"><span class="toc-number">1.3.</span> <span class="toc-text">数据的存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法性质"><span class="toc-number">1.4.</span> <span class="toc-text">算法性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析：大O表示法"><span class="toc-number">1.5.</span> <span class="toc-text">算法分析：大O表示法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表"><span class="toc-number">2.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序表"><span class="toc-number">2.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局限"><span class="toc-number">2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-number">2.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单链表"><span class="toc-number">2.2.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-1"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限-1"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双链表"><span class="toc-number">2.2.2.</span> <span class="toc-text">双链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环链表"><span class="toc-number">2.2.3.</span> <span class="toc-text">循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表的比较"><span class="toc-number">2.3.</span> <span class="toc-text">线性表的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈LIFO"><span class="toc-number">2.4.</span> <span class="toc-text">栈LIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列FIFO"><span class="toc-number">2.5.</span> <span class="toc-text">队列FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">2.6.</span> <span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">3.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">3.1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.2.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">3.3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-number">3.3.1.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树"><span class="toc-number">3.4.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">3.4.2.</span> <span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">3.5.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建：筛选法"><span class="toc-number">3.5.1.</span> <span class="toc-text">构建：筛选法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">3.5.2.</span> <span class="toc-text">优先队列*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#huffman编码树"><span class="toc-number">3.6.</span> <span class="toc-text">huffman编码树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建方法"><span class="toc-number">3.6.1.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成树"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的存储"><span class="toc-number">4.0.2.</span> <span class="toc-text">图的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图的遍历"><span class="toc-number">4.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索（DFS）"><span class="toc-number">4.1.1.</span> <span class="toc-text">深度优先搜索（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-4"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索（BFS）"><span class="toc-number">4.1.2.</span> <span class="toc-text">广度优先搜索（BFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-5"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小生成树"><span class="toc-number">4.2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prim算法"><span class="toc-number">4.2.1.</span> <span class="toc-text">prim算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-6"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kruskal算法"><span class="toc-number">4.2.2.</span> <span class="toc-text">kruskal算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-7"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最短路径"><span class="toc-number">4.3.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单源最短路：Dijkstra算法"><span class="toc-number">4.3.1.</span> <span class="toc-text">单源最短路：Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-8"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结点的数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">结点的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构的分类"><span class="toc-number">1.2.</span> <span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的存储结构"><span class="toc-number">1.3.</span> <span class="toc-text">数据的存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法性质"><span class="toc-number">1.4.</span> <span class="toc-text">算法性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析：大O表示法"><span class="toc-number">1.5.</span> <span class="toc-text">算法分析：大O表示法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表"><span class="toc-number">2.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序表"><span class="toc-number">2.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局限"><span class="toc-number">2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-number">2.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单链表"><span class="toc-number">2.2.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-1"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限-1"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双链表"><span class="toc-number">2.2.2.</span> <span class="toc-text">双链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环链表"><span class="toc-number">2.2.3.</span> <span class="toc-text">循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表的比较"><span class="toc-number">2.3.</span> <span class="toc-text">线性表的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈LIFO"><span class="toc-number">2.4.</span> <span class="toc-text">栈LIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列FIFO"><span class="toc-number">2.5.</span> <span class="toc-text">队列FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">2.6.</span> <span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">3.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">3.1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.2.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">3.3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-number">3.3.1.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树"><span class="toc-number">3.4.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">3.4.2.</span> <span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">3.5.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建：筛选法"><span class="toc-number">3.5.1.</span> <span class="toc-text">构建：筛选法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">3.5.2.</span> <span class="toc-text">优先队列*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#huffman编码树"><span class="toc-number">3.6.</span> <span class="toc-text">huffman编码树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建方法"><span class="toc-number">3.6.1.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成树"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的存储"><span class="toc-number">4.0.2.</span> <span class="toc-text">图的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图的遍历"><span class="toc-number">4.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索（DFS）"><span class="toc-number">4.1.1.</span> <span class="toc-text">深度优先搜索（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-4"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索（BFS）"><span class="toc-number">4.1.2.</span> <span class="toc-text">广度优先搜索（BFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-5"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小生成树"><span class="toc-number">4.2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prim算法"><span class="toc-number">4.2.1.</span> <span class="toc-text">prim算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-6"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kruskal算法"><span class="toc-number">4.2.2.</span> <span class="toc-text">kruskal算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-7"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最短路径"><span class="toc-number">4.3.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单源最短路：Dijkstra算法"><span class="toc-number">4.3.1.</span> <span class="toc-text">单源最短路：Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-8"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#顶点对之间的最短路：Floyd算法"><span class="toc-number">4.3.2.</span> <span class="toc-text">顶点对之间的最短路：Floyd算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拓扑排序"><span class="toc-number">4.4.</span> <span class="toc-text">拓扑排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-number">4.4.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-9"><span class="toc-number">4.4.2.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逆拓扑排序"><span class="toc-number">4.4.3.</span> <span class="toc-text">逆拓扑排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键路径"><span class="toc-number">4.5.</span> <span class="toc-text">关键路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-10"><span class="toc-number">4.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找"><span class="toc-number">5.</span> <span class="toc-text">查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态查找"><span class="toc-number">5.1.</span> <span class="toc-text">静态查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-顺序查找"><span class="toc-number">5.1.1.</span> <span class="toc-text">1. 顺序查找</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点："><span class="toc-number">5.1.1.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点："><span class="toc-number">5.1.1.2.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-折半查找（二分查找）"><span class="toc-number">5.1.2.</span> <span class="toc-text">2. 折半查找（二分查找）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判定树"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">判定树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-分块查找（索引顺序查找）"><span class="toc-number">5.1.3.</span> <span class="toc-text">3. 分块查找（索引顺序查找）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态查找"><span class="toc-number">5.2.</span> <span class="toc-text">动态查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树（B树）"><span class="toc-number">5.2.1.</span> <span class="toc-text">B-树（B树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#性质："><span class="toc-number">5.2.1.1.</span> <span class="toc-text">性质：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入："><span class="toc-number">5.2.1.2.</span> <span class="toc-text">插入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除："><span class="toc-number">5.2.1.3.</span> <span class="toc-text">删除：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树"><span class="toc-number">5.2.2.</span> <span class="toc-text">B+树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点：-1"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找-1"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入-1"><span class="toc-number">5.2.2.3.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除-1"><span class="toc-number">5.2.2.4.</span> <span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列"><span class="toc-number">5.3.</span> <span class="toc-text">散列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#散列函数"><span class="toc-number">5.3.1.</span> <span class="toc-text">散列函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#直接定址法"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">直接定址法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数字分析法"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">数字分析法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#除留余数法"><span class="toc-number">5.3.1.3.</span> <span class="toc-text">除留余数法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平方取中法"><span class="toc-number">5.3.1.4.</span> <span class="toc-text">平方取中法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基数转换法"><span class="toc-number">5.3.1.5.</span> <span class="toc-text">基数转换法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#折叠法"><span class="toc-number">5.3.1.6.</span> <span class="toc-text">折叠法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冲突解决方法"><span class="toc-number">5.3.2.</span> <span class="toc-text">冲突解决方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序"><span class="toc-number">6.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内部排序"><span class="toc-number">6.1.</span> <span class="toc-text">内部排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入排序"><span class="toc-number">6.1.1.</span> <span class="toc-text">插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-直接插入排序"><span class="toc-number">6.1.1.1.</span> <span class="toc-text">1. 直接插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-折半插入排序"><span class="toc-number">6.1.1.2.</span> <span class="toc-text">2.折半插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-希尔排序"><span class="toc-number">6.1.1.3.</span> <span class="toc-text">3. 希尔排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换排序"><span class="toc-number">6.1.2.</span> <span class="toc-text">交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-冒泡排序"><span class="toc-number">6.1.2.1.</span> <span class="toc-text">1. 冒泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-快速排序"><span class="toc-number">6.1.2.2.</span> <span class="toc-text">2. 快速排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择排序"><span class="toc-number">6.1.3.</span> <span class="toc-text">选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-简单选择排序"><span class="toc-number">6.1.3.1.</span> <span class="toc-text">1. 简单选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-堆排序"><span class="toc-number">6.1.3.2.</span> <span class="toc-text">2. 堆排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并排序"><span class="toc-number">6.1.4.</span> <span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基数排序"><span class="toc-number">6.1.5.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序方法的选择"><span class="toc-number">6.1.6.</span> <span class="toc-text">排序方法的选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部排序"><span class="toc-number">6.2.</span> <span class="toc-text">外部排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#预处理："><span class="toc-number">6.2.1.</span> <span class="toc-text">预处理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多路归并："><span class="toc-number">6.2.2.</span> <span class="toc-text">多路归并：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#赢者树"><span class="toc-number">6.2.2.1.</span> <span class="toc-text">赢者树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#败者树"><span class="toc-number">6.2.2.2.</span> <span class="toc-text">败者树</span></a></li></ol></li></ol></li></ol></li></ol>
 		
 		</div>
 		
 		<blockquote>
 <p>本人对于大学期间《数据结构与算法》课程的所做复习时的一些总结。</p>
-<p>未完成，持续更新（目前进度：dijkstra算法）</p>
+<p>已完成</p>
 </blockquote>
 <a id="more"></a>
-<p>[TOC]</p>
 <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><ul>
 <li>数据的逻辑结构由<code>数据结点</code>(Node)和连接两个结点的边<code>二元关系</code>组成</li>
 </ul>
@@ -278,6 +277,267 @@
 <h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><h3 id="单源最短路：Dijkstra算法"><a href="#单源最短路：Dijkstra算法" class="headerlink" title="单源最短路：Dijkstra算法"></a>单源最短路：Dijkstra算法</h3><p>按照路径长度递增的次序产生到各顶点最短路径的贪心算法</p>
 <p>从dis数组中选取最小值，将对应端点加入S中；从这个端点出发且终点不在S中的边中选出最小的边，更新最短路；重复直至S包含了所有端点</p>
 <h4 id="时间复杂度-8"><a href="#时间复杂度-8" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><p>选择最短dis时如果用简单选择法，复杂度为O(n^2)；如果用最小堆，复杂度为O(nlog(n))</p>
+<h3 id="顶点对之间的最短路：Floyd算法"><a href="#顶点对之间的最短路：Floyd算法" class="headerlink" title="顶点对之间的最短路：Floyd算法"></a>顶点对之间的最短路：Floyd算法</h3><p>动态规划算法，时间复杂度<strong>仍为O(n^3)</strong>，但是思路更简单</p>
+<p>定义adj矩阵与path矩阵，adj矩阵初始化为所有边（仅计算出），path矩阵为顶点自身；遍历n次矩阵，每次遍历adj矩阵，当adj[i][k] == INF时直接进行下一次循环（因为点i到点k不可达，一定不能更新矩阵）；否则，当 adj[i][k] + adj[k][j] &lt; adj[i][j] 时更新adj[i][j] = adj[i][k] + adj[k][j] 以及 path[i][j] = k。</p>
+<p>遍历完成后adj[i][j] 即为i到j的最短路径，path[i][j] 就是i到j的最短路径中j之前的结点，只需循环即可找出最短路的所有结点。</p>
+<h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><p>无向图中是否存在环可以直接用深度优先搜索查找；而有向图中则需要使用拓扑排序。</p>
+<h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>找出任意一个没有入边的顶点，然后输出该顶点，并从图中删除该顶点和由它指出的边，修正其余顶点的入度信息。当图中找不到没有入边的顶点时，若所有的顶点都访问过，则图中无环。</p>
+<h3 id="时间复杂度-9"><a href="#时间复杂度-9" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>通过维护一个入度为0的顶点的列表来进行简化(<code>Kahn算法</code>)；初始化入度为0的列表的时间复杂度为O(n+e)，读取列表中的每一个结点并遍历所有边的复杂度同样为O(n+e)，所以总的时间复杂度为<strong>O(n+e)</strong>；</p>
+<h3 id="逆拓扑排序"><a href="#逆拓扑排序" class="headerlink" title="逆拓扑排序"></a>逆拓扑排序</h3><p>与拓扑排序相反，寻找出度为0的顶点。</p>
+<h2 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h2><p>AOE网中只有一个入度为0的点（源点）和一个初度为0的点（汇点）。可以用来估算项目的完成时间（关键路径）</p>
+<p>先用拓扑排序计算各个顶点的最早发生时间，然后用逆拓扑排序计算顶点的最晚发生时间；如果边的前置顶点的最早发生时间与边的后继顶点的最晚发生时间减去权重相等的话，这条边就属于关键路径</p>
+<h3 id="时间复杂度-10"><a href="#时间复杂度-10" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>使用邻接表时复杂度为O(n+e)</p>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><h2 id="静态查找"><a href="#静态查找" class="headerlink" title="静态查找"></a>静态查找</h2><p>指在查找过程中不更改数据集中的数据</p>
+<h3 id="1-顺序查找"><a href="#1-顺序查找" class="headerlink" title="1. 顺序查找"></a>1. 顺序查找</h3><p>等概率下查找成功的平均查找长度为(n+1)/2；查找失败需要比较(n+1)次</p>
+<h4 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h4><p>对表的特性没有要求；插入元素可以直接加到表尾</p>
+<h4 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h4><p>平均查找长度大，平均和最坏情况下<strong>时间复杂度都是O(n)</strong>，当数据规模较大时，查找效率低</p>
+<h3 id="2-折半查找（二分查找）"><a href="#2-折半查找（二分查找）" class="headerlink" title="2. 折半查找（二分查找）"></a>2. 折半查找（二分查找）</h3><p>需要数据<strong>有序</strong>地存储在<strong>线性表</strong>中。（因为查找中需要对数据元素通过编号进行随机访问）</p>
+<h4 id="判定树"><a href="#判定树" class="headerlink" title="判定树"></a>判定树</h4><p>树中每个结点用于表示算法中参与比较的数据元素编号的二叉树</p>
+<ol>
+<li>具有n个结点的判定树的高度为log_2(n) + 1（向下取整）</li>
+</ol>
+<ul>
+<li><p>折半查找法查找成功的平均查找长度为((n+1)/n)log_2(n+1) - 1；最坏情况下或查找不成功均为log_2(n) + 1；</p>
+</li>
+<li><p>只适用于顺序存储的有序表；新增或删除数据时操作复杂</p>
+</li>
+</ul>
+<h3 id="3-分块查找（索引顺序查找）"><a href="#3-分块查找（索引顺序查找）" class="headerlink" title="3. 分块查找（索引顺序查找）"></a>3. 分块查找（索引顺序查找）</h3><p>将n个数据元素划分为m块，块中的数据不必有序，但块与块之间必须“按块有序”，即第i块中的任意数据都必须小于第i+1块中的任意数据。对每块建立一个索引项，形成具有m个索引项的索引表。索引项包括块中的最大关键字和第一个记录的位置。索引表中的各个索引项按关键字有序。</p>
+<p>查找时索引表折半查找确定数据块，然后在数据块中顺序查找</p>
+<p>分块查找的平均查找长度：((n+1)/n) log_2(n/m + 1) + (m+1)/2</p>
+<h2 id="动态查找"><a href="#动态查找" class="headerlink" title="动态查找"></a>动态查找</h2><p>主要通过树结构来实现</p>
+<h3 id="B-树（B树）"><a href="#B-树（B树）" class="headerlink" title="B-树（B树）"></a>B-树（B树）</h3><p>是一种平衡的多路查找树。一棵m阶的B树，或为空树，或满足以下性质：</p>
+<ul>
+<li>树中的每个结点最多有m棵子树</li>
+<li>根结点<strong>至少</strong>有两棵子树</li>
+<li>除根结点之外的所有非叶结点至少有m/2 棵子树</li>
+<li>所有叶子结点都出现在同一层</li>
+<li>有n棵子树的非叶结点包含了n-1个关键字：(n, T0,K1,T1,K2,…,Kn,Tn)<ul>
+<li>m/2 - 1 &lt;= n &lt;= m-1，为关键字的个数，n+1为子树个数</li>
+<li>Ki为关键字且从小到大排序</li>
+<li>Ti为指向子树根结点的指针，且指针T(i-1)所指子树的所有结点的关键字均小于Ki，均大于K(i-1)</li>
+</ul>
+</li>
+</ul>
+<p>B-树至少是半满的、有较少的层，而且是完全平衡的</p>
+<h4 id="性质："><a href="#性质：" class="headerlink" title="性质："></a>性质：</h4><ul>
+<li>含有n个结点的m阶B-树的最大高度不超过log_m/2((N+1)/2) + 1</li>
+</ul>
+<h4 id="插入："><a href="#插入：" class="headerlink" title="插入："></a>插入：</h4><p>向m阶B-树的叶结点中添加关键字，若该结点中关键字已满，则将叶结点分裂成两个，并把一个关键字提升到双亲结点中，重复此过程直到某个结点的关键字未满或者产生新的根结点。</p>
+<h4 id="删除："><a href="#删除：" class="headerlink" title="删除："></a>删除：</h4><ul>
+<li>删除的结点不是叶子结点，则用左子树的最大结点（或者右子树的最小结点）替换该结点并删除该结点</li>
+<li>结点删除后的关键字个数不小于m/2-1，结束</li>
+<li>兄弟结点有多余关键字时，用左兄弟的最右侧关键字（或右兄弟的最左侧关键字）替换双亲结点中划分这两个结点的关键字，将双亲结点中被替换的关键字加入此节点中</li>
+<li>兄弟结点都没有多余关键字时，将p，p的左（右）兄弟结点以及双亲结点中划分这两个结点的关键字合并。重复以上步骤</li>
+</ul>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h3><p>B-树的变形树，常用于数据库和文件系统中。</p>
+<h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><ul>
+<li>能够保持数据稳定有序</li>
+<li>插入和修改有稳定的时间复杂度</li>
+</ul>
+<p>一个m阶的B+树或为空树，满足以下特点：</p>
+<ul>
+<li>树中的每个结点最多有m棵子树</li>
+<li>根结点<strong>至少</strong>有两棵子树</li>
+<li>除根结点之外的所有非叶结点至少有m/2 棵子树</li>
+<li>所有叶子结点都出现在同一层</li>
+<li>有n棵子树的非叶子结点包含n个关键字：(n,T1,K1,T2,K2,…,Tn,Kn)<ul>
+<li>其中n为关键字的个数，即子树个数</li>
+<li>Ki为关键字，从小到大排序</li>
+<li>Ti为指向子树根结点的指针，子树中所有结点的关键字均不大于Ki</li>
+</ul>
+</li>
+<li>所有子树连接成一个序列</li>
+</ul>
+<h4 id="查找-1"><a href="#查找-1" class="headerlink" title="查找"></a>查找</h4><p>在查找时，无论非叶子结点上的关键字是否与给定关键字相同，都要向下查找到叶子结点。</p>
+<h4 id="插入-1"><a href="#插入-1" class="headerlink" title="插入"></a>插入</h4><p>当结点中的关键字个数大于m时要分裂成两个结点，把划分两个结点的关键字<strong>复制</strong>到双亲结点中</p>
+<h4 id="删除-1"><a href="#删除-1" class="headerlink" title="删除"></a>删除</h4><p>当叶结点的最大关键字被删除时，其在非叶结点中的副本仍可作为一个分界关键字存在。若删除使叶子结点中关键字的个数小于m/2时，如果该叶结点的兄弟结点关键字大于m/2，则将关键字重新分配。否则将其合并并删除父节点中的关键字、重复以上步骤</p>
+<h2 id="散列"><a href="#散列" class="headerlink" title="散列"></a>散列</h2><p>在记录的关键字与它的存储位置之间建立一个确定的对应函数关系，使得每个关键字与结构中一个唯一的存储位置相对应。在查找时，首先对记录的关键字进行函数计算，把函数值当做该记录的存储位置，在结构中按此位置取记录比较。</p>
+<h3 id="散列函数"><a href="#散列函数" class="headerlink" title="散列函数"></a>散列函数</h3><ol>
+<li>散列函数的定义域必须包括需要存储的全部关键字，如果散列表有m个地址时，其值域必须在0~m-1之间</li>
+<li>散列函数计算出的地址应能均匀分布在整个地址空间中</li>
+<li>应能在短时间内计算出结果</li>
+</ol>
+<h4 id="直接定址法"><a href="#直接定址法" class="headerlink" title="直接定址法"></a>直接定址法</h4><p>Hash(key) = a*key + b</p>
+<h4 id="数字分析法"><a href="#数字分析法" class="headerlink" title="数字分析法"></a>数字分析法</h4><p>设有n个d位数，每一位可能有r种不同的符号。可根据散列表的大小选取其中各种符号分布均匀的若干位作为散列地址</p>
+<p>这种方法完全依赖于关键码集合</p>
+<h4 id="除留余数法"><a href="#除留余数法" class="headerlink" title="除留余数法"></a>除留余数法</h4><p>Hash(key) = key%p</p>
+<h4 id="平方取中法"><a href="#平方取中法" class="headerlink" title="平方取中法"></a>平方取中法</h4><p>先计算关键字的平方值，然后根据散列表长度取中间的几位数作为散列函数值</p>
+<h4 id="基数转换法"><a href="#基数转换法" class="headerlink" title="基数转换法"></a>基数转换法</h4><p>将关键字转换为另一种进制的数，然后计算散列地址</p>
+<h4 id="折叠法"><a href="#折叠法" class="headerlink" title="折叠法"></a>折叠法</h4><p>把关键字自左到右分成位数相等的几部分，每一部分的位数应与散列表地址位数相同，把这些部分的数据叠加起来得到散列地址。叠加可以移位或者折叠</p>
+<h3 id="冲突解决方法"><a href="#冲突解决方法" class="headerlink" title="冲突解决方法"></a>冲突解决方法</h3><ol>
+<li><p>开放定址法</p>
+<p>当冲突发生时，为key生成一个探查地址序列，当冲突时依次探查。</p>
+<ol>
+<li>线性探查法：继续向相邻的下一个位置探查</li>
+<li>二次探查法：d, d+1^2, d-1^2,d+2^2,d-2^2,…</li>
+<li>伪随机探查法：使用随机数生成器来生成随机的探查地址序列</li>
+<li>双散列探查法：Hash(key) + i * ReHash(key)</li>
+</ol>
+</li>
+<li><p>链接法</p>
+<p>散列表中的每个地址都是一个链表的表头，直接将相同地址的记录加入链表中</p>
+</li>
+<li><p>桶定址法</p>
+<p>把记录分为若干存储桶，每个存储通包含一个或多个存储位置，一个存储桶内的各存储位置用指针连接起来。散列函数f将关键字key映射到f(key)号存储桶。如果某个地址关联的桶满了，则可以使用开放定址法解决冲突。</p>
+</li>
+</ol>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h4 id="1-直接插入排序"><a href="#1-直接插入排序" class="headerlink" title="1. 直接插入排序"></a>1. 直接插入排序</h4><ul>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：O(n)</li>
+<li>最坏：O(n^2)</li>
+<li>平均：O(n^2)</li>
+</ul>
+</li>
+<li>稳定性：稳定</li>
+</ul>
+<h4 id="2-折半插入排序"><a href="#2-折半插入排序" class="headerlink" title="2.折半插入排序"></a>2.折半插入排序</h4><ul>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：O(n)</li>
+<li>最坏：O(n^2)</li>
+<li>平均：O(n^2)</li>
+</ul>
+</li>
+<li><p>稳定性：稳定</p>
+</li>
+<li><p>特点：对前p个有序序列进行二分查找；减少了比较次数，并未减少移动次数</p>
+</li>
+</ul>
+<h4 id="3-希尔排序"><a href="#3-希尔排序" class="headerlink" title="3. 希尔排序"></a>3. 希尔排序</h4><ul>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：O(n)</li>
+<li>最坏：</li>
+<li>平均：O(n^1.3)</li>
+</ul>
+</li>
+<li><p>稳定性：不稳定</p>
+</li>
+<li><p>特点：时间复杂度与增量的选择有关</p>
+</li>
+</ul>
+<h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><h4 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1. 冒泡排序"></a>1. 冒泡排序</h4><ul>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：O(n)</li>
+<li>最坏：O(n^2)</li>
+<li>平均：O(n^2)</li>
+</ul>
+</li>
+<li>稳定性：稳定</li>
+</ul>
+<h4 id="2-快速排序"><a href="#2-快速排序" class="headerlink" title="2. 快速排序"></a>2. 快速排序</h4><ul>
+<li><p>空间复杂度：O(logn)~O(n)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：O(nlogn)</li>
+<li>最坏：O(n^2)</li>
+<li>平均：O(nlogn)</li>
+</ul>
+</li>
+<li><p>稳定性：不稳定</p>
+</li>
+<li><p>特点：基于分治法；递归地将比轴元素小的放在左边、大的放在右边，最后直接合并</p>
+</li>
+</ul>
+<h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h4 id="1-简单选择排序"><a href="#1-简单选择排序" class="headerlink" title="1. 简单选择排序"></a>1. 简单选择排序</h4><ul>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：</li>
+<li>最坏：</li>
+<li>平均：O(n^2)</li>
+</ul>
+</li>
+<li><p>稳定性：不稳定</p>
+</li>
+<li><p>特点：每次选取最小（最大）的记录与第p个记录进行交换</p>
+</li>
+</ul>
+<h4 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2. 堆排序"></a>2. 堆排序</h4><ul>
+<li><p>空间复杂度：O(1)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：</li>
+<li>最坏：O(nlogn)</li>
+<li>平均：O(nlogn)</li>
+</ul>
+</li>
+<li>稳定性：不稳定</li>
+<li>特点：由于存在一个O(n)的建堆过程，适用于数据量较大的情况</li>
+</ul>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><ul>
+<li><p>空间复杂度：O(n)</p>
+</li>
+<li><p>时间复杂度：</p>
+<ul>
+<li>最好：</li>
+<li>最坏：O(nlogn)</li>
+<li>平均：O(nlogn)</li>
+</ul>
+</li>
+<li><p>稳定性：稳定</p>
+</li>
+<li><p>特点：算法复杂度较低，先进行划分，在合并时排序</p>
+</li>
+</ul>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>借助多关键字排序的思想对单逻辑关键字进行排序的方法。</p>
+<ol>
+<li><p>高位优先法（MSDF）</p>
+</li>
+<li><p>低位优先法（LSDF）</p>
+</li>
+</ol>
+<ul>
+<li><p>空间复杂度：O(n)</p>
+</li>
+<li><p>时间复杂度：（d为关键字的个数）</p>
+<ul>
+<li>最好：O(dn)</li>
+<li>最坏：O(dn)</li>
+<li>平均：O(dn)</li>
+</ul>
+</li>
+<li>稳定性：稳定</li>
+</ul>
+<h3 id="排序方法的选择"><a href="#排序方法的选择" class="headerlink" title="排序方法的选择"></a>排序方法的选择</h3><ol>
+<li>元素个数较多，排序关键字随机分布且对稳定性不做要求时：快速排序</li>
+<li>元素个数较多，内存空间允许，要求排序稳定时：二路归并</li>
+<li>元素个数较大，关键字可能出现正序或逆序的情形，对稳定性不做要求：堆排序或二路归并</li>
+<li>元素个数较小，要求稳定：直接插入排序</li>
+<li>元素个数较小，稳定性无要求：直接选择排序</li>
+</ol>
+<h2 id="外部排序"><a href="#外部排序" class="headerlink" title="外部排序"></a>外部排序</h2><p>分为两个阶段：预处理和归并处理</p>
+<h3 id="预处理："><a href="#预处理：" class="headerlink" title="预处理："></a>预处理：</h3><ol>
+<li>初始化堆<ol>
+<li>从磁盘读入M个记录放到内存数组中</li>
+<li>设置堆末尾last = M-1</li>
+<li>建立最小堆</li>
+</ol>
+</li>
+<li>重复一下步骤直到堆为空，即last = -1<ol>
+<li>把根结点送出到输出缓冲区</li>
+<li>设R是输入缓冲区的下一条记录，如果R大于刚刚输出的关键字，则将其放在根结点；否则放在last位置，同时last–</li>
+<li>重新调整堆</li>
+</ol>
+</li>
+</ol>
+<h3 id="多路归并："><a href="#多路归并：" class="headerlink" title="多路归并："></a>多路归并：</h3><h4 id="赢者树"><a href="#赢者树" class="headerlink" title="赢者树"></a>赢者树</h4><h4 id="败者树"><a href="#败者树" class="headerlink" title="败者树"></a>败者树</h4><p>每个叶子结点是某一个串的当前处理的数据，当从小到大排序时，赢者树将左右子结点的最小值所在顺串的索引放在内部结点中（而败者树是将最大值放在结点中）,同时二者均向上推举最小值进行下一轮比较，最后赢者树的根结点即为当前树中最小值的索引，而败者树会多一次推举。</p>
+<p>败者树的优点在于简化了重构，不需要与兄弟结点的记录进行比较。</p>
+<p>对m个串使用k路赢者树或者败者树进行归并时时间复杂度为O(k+nlogk)</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -329,7 +589,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结点的数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">结点的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构的分类"><span class="toc-number">1.2.</span> <span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的存储结构"><span class="toc-number">1.3.</span> <span class="toc-text">数据的存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法性质"><span class="toc-number">1.4.</span> <span class="toc-text">算法性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析：大O表示法"><span class="toc-number">1.5.</span> <span class="toc-text">算法分析：大O表示法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表"><span class="toc-number">2.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序表"><span class="toc-number">2.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局限"><span class="toc-number">2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-number">2.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单链表"><span class="toc-number">2.2.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-1"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限-1"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双链表"><span class="toc-number">2.2.2.</span> <span class="toc-text">双链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环链表"><span class="toc-number">2.2.3.</span> <span class="toc-text">循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表的比较"><span class="toc-number">2.3.</span> <span class="toc-text">线性表的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈LIFO"><span class="toc-number">2.4.</span> <span class="toc-text">栈LIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列FIFO"><span class="toc-number">2.5.</span> <span class="toc-text">队列FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">2.6.</span> <span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">3.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">3.1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.2.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">3.3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-number">3.3.1.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树"><span class="toc-number">3.4.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">3.4.2.</span> <span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">3.5.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建：筛选法"><span class="toc-number">3.5.1.</span> <span class="toc-text">构建：筛选法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">3.5.2.</span> <span class="toc-text">优先队列*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#huffman编码树"><span class="toc-number">3.6.</span> <span class="toc-text">huffman编码树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建方法"><span class="toc-number">3.6.1.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成树"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的存储"><span class="toc-number">4.0.2.</span> <span class="toc-text">图的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图的遍历"><span class="toc-number">4.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索（DFS）"><span class="toc-number">4.1.1.</span> <span class="toc-text">深度优先搜索（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-4"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索（BFS）"><span class="toc-number">4.1.2.</span> <span class="toc-text">广度优先搜索（BFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-5"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小生成树"><span class="toc-number">4.2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prim算法"><span class="toc-number">4.2.1.</span> <span class="toc-text">prim算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-6"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kruskal算法"><span class="toc-number">4.2.2.</span> <span class="toc-text">kruskal算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-7"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最短路径"><span class="toc-number">4.3.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单源最短路：Dijkstra算法"><span class="toc-number">4.3.1.</span> <span class="toc-text">单源最短路：Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-8"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结点的数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">结点的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结构的分类"><span class="toc-number">1.2.</span> <span class="toc-text">结构的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据的存储结构"><span class="toc-number">1.3.</span> <span class="toc-text">数据的存储结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法性质"><span class="toc-number">1.4.</span> <span class="toc-text">算法性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#算法分析：大O表示法"><span class="toc-number">1.5.</span> <span class="toc-text">算法分析：大O表示法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线性表"><span class="toc-number">2.</span> <span class="toc-text">线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序表"><span class="toc-number">2.1.</span> <span class="toc-text">顺序表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度"><span class="toc-number">2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局限"><span class="toc-number">2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链表"><span class="toc-number">2.2.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单链表"><span class="toc-number">2.2.1.</span> <span class="toc-text">单链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-1"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#局限-1"><span class="toc-number">2.2.1.2.</span> <span class="toc-text">局限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双链表"><span class="toc-number">2.2.2.</span> <span class="toc-text">双链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环链表"><span class="toc-number">2.2.3.</span> <span class="toc-text">循环链表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性表的比较"><span class="toc-number">2.3.</span> <span class="toc-text">线性表的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#栈LIFO"><span class="toc-number">2.4.</span> <span class="toc-text">栈LIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#队列FIFO"><span class="toc-number">2.5.</span> <span class="toc-text">队列FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-3"><span class="toc-number">2.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-number">2.6.</span> <span class="toc-text">字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#树"><span class="toc-number">3.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本性质"><span class="toc-number">3.1.</span> <span class="toc-text">基本性质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树"><span class="toc-number">3.2.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.2.1.</span> <span class="toc-text">性质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历"><span class="toc-number">3.2.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉搜索树"><span class="toc-number">3.3.</span> <span class="toc-text">二叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除操作"><span class="toc-number">3.3.1.</span> <span class="toc-text">删除操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#平衡二叉树"><span class="toc-number">3.4.</span> <span class="toc-text">平衡二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-number">3.4.1.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-number">3.4.2.</span> <span class="toc-text">删除</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#堆"><span class="toc-number">3.5.</span> <span class="toc-text">堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建：筛选法"><span class="toc-number">3.5.1.</span> <span class="toc-text">构建：筛选法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先队列"><span class="toc-number">3.5.2.</span> <span class="toc-text">优先队列*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#huffman编码树"><span class="toc-number">3.6.</span> <span class="toc-text">huffman编码树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建方法"><span class="toc-number">3.6.1.</span> <span class="toc-text">构建方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#图"><span class="toc-number">4.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#生成树"><span class="toc-number">4.0.1.</span> <span class="toc-text">生成树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图的存储"><span class="toc-number">4.0.2.</span> <span class="toc-text">图的存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图的遍历"><span class="toc-number">4.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深度优先搜索（DFS）"><span class="toc-number">4.1.1.</span> <span class="toc-text">深度优先搜索（DFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-4"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#广度优先搜索（BFS）"><span class="toc-number">4.1.2.</span> <span class="toc-text">广度优先搜索（BFS）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-5"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最小生成树"><span class="toc-number">4.2.</span> <span class="toc-text">最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prim算法"><span class="toc-number">4.2.1.</span> <span class="toc-text">prim算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-6"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kruskal算法"><span class="toc-number">4.2.2.</span> <span class="toc-text">kruskal算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-7"><span class="toc-number">4.2.2.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最短路径"><span class="toc-number">4.3.</span> <span class="toc-text">最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单源最短路：Dijkstra算法"><span class="toc-number">4.3.1.</span> <span class="toc-text">单源最短路：Dijkstra算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度-8"><span class="toc-number">4.3.1.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#顶点对之间的最短路：Floyd算法"><span class="toc-number">4.3.2.</span> <span class="toc-text">顶点对之间的最短路：Floyd算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拓扑排序"><span class="toc-number">4.4.</span> <span class="toc-text">拓扑排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#算法思想"><span class="toc-number">4.4.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-9"><span class="toc-number">4.4.2.</span> <span class="toc-text">时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逆拓扑排序"><span class="toc-number">4.4.3.</span> <span class="toc-text">逆拓扑排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关键路径"><span class="toc-number">4.5.</span> <span class="toc-text">关键路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度-10"><span class="toc-number">4.5.1.</span> <span class="toc-text">时间复杂度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查找"><span class="toc-number">5.</span> <span class="toc-text">查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#静态查找"><span class="toc-number">5.1.</span> <span class="toc-text">静态查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-顺序查找"><span class="toc-number">5.1.1.</span> <span class="toc-text">1. 顺序查找</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点："><span class="toc-number">5.1.1.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点："><span class="toc-number">5.1.1.2.</span> <span class="toc-text">缺点：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-折半查找（二分查找）"><span class="toc-number">5.1.2.</span> <span class="toc-text">2. 折半查找（二分查找）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#判定树"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">判定树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-分块查找（索引顺序查找）"><span class="toc-number">5.1.3.</span> <span class="toc-text">3. 分块查找（索引顺序查找）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态查找"><span class="toc-number">5.2.</span> <span class="toc-text">动态查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树（B树）"><span class="toc-number">5.2.1.</span> <span class="toc-text">B-树（B树）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#性质："><span class="toc-number">5.2.1.1.</span> <span class="toc-text">性质：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入："><span class="toc-number">5.2.1.2.</span> <span class="toc-text">插入：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除："><span class="toc-number">5.2.1.3.</span> <span class="toc-text">删除：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-树"><span class="toc-number">5.2.2.</span> <span class="toc-text">B+树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点：-1"><span class="toc-number">5.2.2.1.</span> <span class="toc-text">优点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查找-1"><span class="toc-number">5.2.2.2.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插入-1"><span class="toc-number">5.2.2.3.</span> <span class="toc-text">插入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除-1"><span class="toc-number">5.2.2.4.</span> <span class="toc-text">删除</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#散列"><span class="toc-number">5.3.</span> <span class="toc-text">散列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#散列函数"><span class="toc-number">5.3.1.</span> <span class="toc-text">散列函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#直接定址法"><span class="toc-number">5.3.1.1.</span> <span class="toc-text">直接定址法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数字分析法"><span class="toc-number">5.3.1.2.</span> <span class="toc-text">数字分析法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#除留余数法"><span class="toc-number">5.3.1.3.</span> <span class="toc-text">除留余数法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平方取中法"><span class="toc-number">5.3.1.4.</span> <span class="toc-text">平方取中法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基数转换法"><span class="toc-number">5.3.1.5.</span> <span class="toc-text">基数转换法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#折叠法"><span class="toc-number">5.3.1.6.</span> <span class="toc-text">折叠法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冲突解决方法"><span class="toc-number">5.3.2.</span> <span class="toc-text">冲突解决方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序"><span class="toc-number">6.</span> <span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#内部排序"><span class="toc-number">6.1.</span> <span class="toc-text">内部排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入排序"><span class="toc-number">6.1.1.</span> <span class="toc-text">插入排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-直接插入排序"><span class="toc-number">6.1.1.1.</span> <span class="toc-text">1. 直接插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-折半插入排序"><span class="toc-number">6.1.1.2.</span> <span class="toc-text">2.折半插入排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-希尔排序"><span class="toc-number">6.1.1.3.</span> <span class="toc-text">3. 希尔排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换排序"><span class="toc-number">6.1.2.</span> <span class="toc-text">交换排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-冒泡排序"><span class="toc-number">6.1.2.1.</span> <span class="toc-text">1. 冒泡排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-快速排序"><span class="toc-number">6.1.2.2.</span> <span class="toc-text">2. 快速排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择排序"><span class="toc-number">6.1.3.</span> <span class="toc-text">选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-简单选择排序"><span class="toc-number">6.1.3.1.</span> <span class="toc-text">1. 简单选择排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-堆排序"><span class="toc-number">6.1.3.2.</span> <span class="toc-text">2. 堆排序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并排序"><span class="toc-number">6.1.4.</span> <span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基数排序"><span class="toc-number">6.1.5.</span> <span class="toc-text">基数排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序方法的选择"><span class="toc-number">6.1.6.</span> <span class="toc-text">排序方法的选择</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#外部排序"><span class="toc-number">6.2.</span> <span class="toc-text">外部排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#预处理："><span class="toc-number">6.2.1.</span> <span class="toc-text">预处理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多路归并："><span class="toc-number">6.2.2.</span> <span class="toc-text">多路归并：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#赢者树"><span class="toc-number">6.2.2.1.</span> <span class="toc-text">赢者树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#败者树"><span class="toc-number">6.2.2.2.</span> <span class="toc-text">败者树</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -356,11 +616,11 @@
 			
 		
 			
-				<li><a href="/tags/算法/" title="算法">算法<sup>2</sup></a></li>
+				<li><a href="/tags/日常生活/" title="日常生活">日常生活<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/日常生活/" title="日常生活">日常生活<sup>2</sup></a></li>
+				<li><a href="/tags/算法/" title="算法">算法<sup>2</sup></a></li>
 			
 		
 			
