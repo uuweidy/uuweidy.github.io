@@ -1,0 +1,744 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>操作系统概念复习总结 | uuweidy&#39;s world</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="uuweidy">
+    
+
+    
+    <meta name="description" content="本人对于大学期间《操作系统》课程的所做复习时的一些总结。 未完成，最近更新：消息传递">
+<meta name="keywords" content="学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统概念复习总结">
+<meta property="og:url" content="http://yoursite.com/2019/04/09/操作系统概念复习总结/index.html">
+<meta property="og:site_name" content="uuweidy&#39;s world">
+<meta property="og:description" content="本人对于大学期间《操作系统》课程的所做复习时的一些总结。 未完成，最近更新：消息传递">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20170820104536564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWljaGVuZzc3Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2019-04-15T07:23:15.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统概念复习总结">
+<meta name="twitter:description" content="本人对于大学期间《操作系统》课程的所做复习时的一些总结。 未完成，最近更新：消息传递">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20170820104536564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWljaGVuZzc3Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+    
+    <link rel="alternative" href="/atom.xml" title="uuweidy&#39;s world" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="uuweidy&#39;s world" title="uuweidy&#39;s world"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="uuweidy&#39;s world">uuweidy&#39;s world</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/04/09/操作系统概念复习总结/" title="操作系统概念复习总结" itemprop="url">操作系统概念复习总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="uuweidy" target="_blank" itemprop="author">uuweidy</a>
+		
+  <p class="article-time">
+    <time datetime="2019-04-09T02:03:11.000Z" itemprop="datePublished"> 发表于 2019-04-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导论"><span class="toc-number">1.</span> <span class="toc-text">导论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机系统体系结构"><span class="toc-number">1.1.</span> <span class="toc-text">计算机系统体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单处理器系统"><span class="toc-number">1.1.1.</span> <span class="toc-text">单处理器系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多处理器系统"><span class="toc-number">1.1.2.</span> <span class="toc-text">多处理器系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#非对称多处理"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">非对称多处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对称多处理（SMP）"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">对称多处理（SMP）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群系统"><span class="toc-number">1.1.3.</span> <span class="toc-text">集群系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统结构"><span class="toc-number">2.</span> <span class="toc-text">操作系统结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统服务"><span class="toc-number">2.1.</span> <span class="toc-text">操作系统服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统调用"><span class="toc-number">2.2.</span> <span class="toc-text">系统调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用类型"><span class="toc-number">2.2.1.</span> <span class="toc-text">系统调用类型*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机"><span class="toc-number">2.3.</span> <span class="toc-text">虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建虚拟机的原因"><span class="toc-number">2.3.1.</span> <span class="toc-text">创建虚拟机的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">2.3.2.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程（CPU资源分配的基本单元）"><span class="toc-number">3.</span> <span class="toc-text">进程（CPU资源分配的基本单元）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">3.1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程状态"><span class="toc-number">3.1.1.</span> <span class="toc-text">进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程控制块（PCB，进程存在的唯一标志）"><span class="toc-number">3.1.2.</span> <span class="toc-text">进程控制块（PCB，进程存在的唯一标志）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程"><span class="toc-number">3.1.3.</span> <span class="toc-text">线程*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程调度"><span class="toc-number">3.2.</span> <span class="toc-text">进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调度队列"><span class="toc-number">3.2.1.</span> <span class="toc-text">调度队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调度程序"><span class="toc-number">3.2.2.</span> <span class="toc-text">调度程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上下文切换"><span class="toc-number">3.2.3.</span> <span class="toc-text">上下文切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程操作"><span class="toc-number">3.3.</span> <span class="toc-text">进程操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程创建"><span class="toc-number">3.3.1.</span> <span class="toc-text">进程创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程终止"><span class="toc-number">3.3.2.</span> <span class="toc-text">进程终止</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程间通信"><span class="toc-number">3.4.</span> <span class="toc-text">进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#共享内存"><span class="toc-number">3.4.1.</span> <span class="toc-text">共享内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息传递"><span class="toc-number">3.4.2.</span> <span class="toc-text">消息传递</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名"><span class="toc-number">3.4.2.1.</span> <span class="toc-text">命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同步"><span class="toc-number">3.4.2.2.</span> <span class="toc-text">同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓冲"><span class="toc-number">3.4.2.3.</span> <span class="toc-text">缓冲</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程（CPU使用的基本单元）"><span class="toc-number">4.</span> <span class="toc-text">线程（CPU使用的基本单元）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">4.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程模型"><span class="toc-number">4.2.</span> <span class="toc-text">多线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多对一模型"><span class="toc-number">4.2.1.</span> <span class="toc-text">多对一模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一对一模型"><span class="toc-number">4.2.2.</span> <span class="toc-text">一对一模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多对多模型"><span class="toc-number">4.2.3.</span> <span class="toc-text">多对多模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二级模型（混合模型）"><span class="toc-number">4.2.4.</span> <span class="toc-text">二级模型（混合模型）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-number">4.3.</span> <span class="toc-text">其它</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU调度"><span class="toc-number">5.</span> <span class="toc-text">CPU调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念-1"><span class="toc-number">5.1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-I-O区间周期"><span class="toc-number">5.1.1.</span> <span class="toc-text">CPU-I/O区间周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU调度程序"><span class="toc-number">5.1.2.</span> <span class="toc-text">CPU调度程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抢占调度"><span class="toc-number">5.1.3.</span> <span class="toc-text">抢占调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分派程序"><span class="toc-number">5.1.4.</span> <span class="toc-text">分派程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度准则"><span class="toc-number">5.2.</span> <span class="toc-text">调度准则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度算法"><span class="toc-number">5.3.</span> <span class="toc-text">调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先到先服务调度算法（FCFS）"><span class="toc-number">5.3.1.</span> <span class="toc-text">先到先服务调度算法（FCFS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最短作业优先调度（SJF）"><span class="toc-number">5.3.2.</span> <span class="toc-text">最短作业优先调度（SJF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先级调度"><span class="toc-number">5.3.3.</span> <span class="toc-text">优先级调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轮转法（RR）"><span class="toc-number">5.3.4.</span> <span class="toc-text">轮转法（RR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多级队列调度"><span class="toc-number">5.3.5.</span> <span class="toc-text">多级队列调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多级反馈队列调度"><span class="toc-number">5.3.6.</span> <span class="toc-text">多级反馈队列调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多处理器调度"><span class="toc-number">5.4.</span> <span class="toc-text">多处理器调度</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>本人对于大学期间《操作系统》课程的所做复习时的一些总结。</p>
+<p>未完成，最近更新：消息传递</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="导论"><a href="#导论" class="headerlink" title="导论"></a>导论</h1><p>操作系统是<strong>资源分配器</strong>和<strong>控制程序</strong></p>
+<h2 id="计算机系统体系结构"><a href="#计算机系统体系结构" class="headerlink" title="计算机系统体系结构"></a>计算机系统体系结构</h2><h3 id="单处理器系统"><a href="#单处理器系统" class="headerlink" title="单处理器系统"></a>单处理器系统</h3><p>有一个主CPU执行一个通用指令集，其他专用处理器运行一个受限的指令集，并不运行用户进程</p>
+<h3 id="多处理器系统"><a href="#多处理器系统" class="headerlink" title="多处理器系统"></a>多处理器系统</h3><p>有多个紧密通信的CPU，共享计算机总线</p>
+<p>有三个主要优点：</p>
+<ul>
+<li>增加吞吐量</li>
+<li>规模经济</li>
+<li>增加可靠性</li>
+</ul>
+<h4 id="非对称多处理"><a href="#非对称多处理" class="headerlink" title="非对称多处理"></a>非对称多处理</h4><p>每个处理器有各自特定的任务，主处理器调度从处理器并安排工作。</p>
+<h4 id="对称多处理（SMP）"><a href="#对称多处理（SMP）" class="headerlink" title="对称多处理（SMP）"></a>对称多处理（SMP）</h4><h3 id="集群系统"><a href="#集群系统" class="headerlink" title="集群系统"></a>集群系统</h3><p>集群计算机共享存储并通过局域网络连接或者更快的内部连接。</p>
+<p>通常用来提供<strong>高可用性</strong>服务，当集群中的一个或多个系统出错时，服务仍然继续。</p>
+<p>可以是对称的，也可以是非对称的。<strong>非对称集群</strong>中一台机器处于热备份模式，而另一台运行应用程序。热备份主机只监视服务器，当服务器失效时热备份主机会成为现行服务器。<strong>对称集群</strong>中多个主机都运行应用程序，它们互相监视。</p>
+<h1 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h1><ol>
+<li>简单结构<ol>
+<li>较小、简单且功能有限</li>
+<li>没有很好地区分接口和功能层次</li>
+</ol>
+</li>
+<li>分层方法<ol>
+<li>系统分为若干层，每个层由数据结构和一组可为上层所调用的子程序集合所组成</li>
+<li>构造和调试的简单化</li>
+<li>对层的详细定义困难</li>
+<li>效率较低</li>
+</ol>
+</li>
+<li>微内核<ol>
+<li>把所有非基本部分从内核移走并实现为系统程序或用户程序</li>
+<li>使客户程序和运行在用户空间的各种服务之间进行通信。通信以消息传递形式提供</li>
+<li>便于扩充操作系统</li>
+<li>提供了更好的安全性和可靠性</li>
+<li>很容易从一种硬件平台设计移植到另一种硬件平台设计</li>
+<li>系统功能总开销增加导致了系统性能的下降</li>
+</ol>
+</li>
+<li>模块<ol>
+<li>用面向对象编程技术来生成模块化的内核，使用动态加载模块。</li>
+<li>允许内核提供核心服务，也能动态地实现特定的功能。</li>
+<li>由于不需要调用消息传递来通信，更为高效</li>
+</ol>
+</li>
+</ol>
+<h2 id="操作系统服务"><a href="#操作系统服务" class="headerlink" title="操作系统服务"></a>操作系统服务</h2><p>用户与操作系统的交互方式：</p>
+<ul>
+<li>命令行</li>
+<li>系统调用</li>
+<li>图形界面</li>
+</ul>
+<p>一组操作系统服务提供对用户很有用的函数：</p>
+<ul>
+<li>用户界面</li>
+<li>程序执行</li>
+<li>I/O操作</li>
+<li>文件系统操作</li>
+<li>通信</li>
+<li>错误检测</li>
+</ul>
+<p>另一组操作系统函数确保系统本身高效运行：</p>
+<ul>
+<li>资源分配</li>
+<li>统计</li>
+<li>保护和安全</li>
+</ul>
+<h2 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h2><p>提供了操作系统提供的有效服务界面。</p>
+<p>向操作系统传递参数的三种方法：</p>
+<ol>
+<li>寄存器</li>
+<li>内存的块</li>
+<li>堆栈</li>
+</ol>
+<blockquote>
+<p> <em>堆和栈的区别</em></p>
+<ul>
+<li>数据结构类型不同（但是此处的堆和数据结构中的堆<strong>不同</strong>！）</li>
+<li>堆由程序员申请和释放空间大小、栈由系统分配和回收</li>
+</ul>
+</blockquote>
+<h3 id="系统调用类型"><a href="#系统调用类型" class="headerlink" title="系统调用类型*"></a>系统调用类型*</h3><ul>
+<li><p>进程控制</p>
+</li>
+<li><p>文件管理</p>
+</li>
+<li><p>设备管理</p>
+</li>
+<li><p>信息维护</p>
+</li>
+<li><p>通信</p>
+</li>
+</ul>
+<h2 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h2><p>将单个计算机的硬件抽象为几个不同的执行部件，从而造成一种每个独立的执行环境都在自己的计算机上运行的幻觉。</p>
+<h3 id="创建虚拟机的原因"><a href="#创建虚拟机的原因" class="headerlink" title="创建虚拟机的原因"></a>创建虚拟机的原因</h3><ul>
+<li>在并行运行几个不同的执行环境时能够共享相同的硬件</li>
+<li>能够运行原来机器所具有的任何操作系统或软件包</li>
+</ul>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>每个虚拟机完全独立于其他虚拟机，因此没有安全问题</li>
+<li>用于研究和开发操作系统</li>
+</ol>
+<h1 id="进程（CPU资源分配的基本单元）"><a href="#进程（CPU资源分配的基本单元）" class="headerlink" title="进程（CPU资源分配的基本单元）"></a>进程（CPU资源分配的基本单元）</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>进程包括：</p>
+<ul>
+<li>文本段（程序代码）</li>
+<li>程序计数器和寄存器</li>
+<li>堆栈段</li>
+<li>数据段</li>
+<li>堆</li>
+<li>全局段</li>
+<li>文字常量段</li>
+</ul>
+<p>程序是被动实体，是静态的；进程是活动实体，是动态的</p>
+<h3 id="进程状态"><a href="#进程状态" class="headerlink" title="进程状态"></a>进程状态</h3><p>每个进程可能处于下列状态之一：</p>
+<ul>
+<li>新的</li>
+<li>运行</li>
+<li>等待</li>
+<li>就绪</li>
+<li>终止</li>
+<li>就绪挂起</li>
+</ul>
+<p>一次只有一个进程可在一个处理器上运行，但是多个进程可处于就绪或等待状态。</p>
+<p><img src="https://img-blog.csdn.net/20170820104536564?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcWljaGVuZzc3Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="进程状态图"></p>
+<h3 id="进程控制块（PCB，进程存在的唯一标志）"><a href="#进程控制块（PCB，进程存在的唯一标志）" class="headerlink" title="进程控制块（PCB，进程存在的唯一标志）"></a>进程控制块（PCB，进程存在的唯一标志）</h3><p>包含许多与一个特定进程相关的信息。</p>
+<ul>
+<li>进程状态</li>
+<li>程序计数器：表示进程要执行的下个指令的地址</li>
+<li>CPU寄存器</li>
+<li>CPU调度信息</li>
+<li>内存管理信息</li>
+<li>记账信息</li>
+<li>I/O状态信息</li>
+</ul>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程*"></a>线程*</h3><h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><p>选择一个可用的进程到CPU上执行，使CPU利用率达到最大化。</p>
+<h3 id="调度队列"><a href="#调度队列" class="headerlink" title="调度队列"></a>调度队列</h3><p>作业队列中包括系统中的所有进程，驻留在内存中就绪的、等待运行的进程保存在就绪队列中。</p>
+<p>等待特定I/O设备的进程列表称为设备队列，每个设备都有自己的设备队列。</p>
+<h3 id="调度程序"><a href="#调度程序" class="headerlink" title="调度程序"></a>调度程序</h3><p>对于批处理系统，进程被放到缓冲池中，<strong>长期调度程序</strong>或<strong>作业调度程序</strong>从该池中选择进程，并装入内存以准备执行。<strong>短期调度程序</strong>或<strong>CPU调度程序</strong>从准备执行的进程中选择进程分配CPU。</p>
+<p>长期调度程序和短期调度程序的区别就是执行的频率。</p>
+<h3 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h3><p>当发生一个中断时，系统需要保存当前运行在CPU中进程的上下文，从而在其处理完成后能恢复上下文。</p>
+<p>通常通过一个状态保存来保存CPU当前状态，之后执行一个状态恢复重新开始运行。</p>
+<p>将CPU切换到另一个进程需要保存当前进程的状态并恢复另一个进程的状态，这一任务称为上下文切换。</p>
+<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><h3 id="进程创建"><a href="#进程创建" class="headerlink" title="进程创建"></a>进程创建</h3><p>进程在执行过程中通过创建进程系统调用创建多个新进程。创建进程称为父进程，新进程称为子进程。每个新进程可以再创建其他进程，从而形成了进程树。</p>
+<p>init进程是所有用户进程的根进程。</p>
+<p>进程标识符（pid）是唯一的操作系统用来识别进程的标志。</p>
+<p>在创建子进程的时候，子进程可能从操作系统那里直接获得资源，也可能只从其父进程那里获得资源。</p>
+<p>父进程可能与子进程并发执行（宏观并行，微观串行），也可能父进程等待子进程执行。</p>
+<blockquote>
+<p>fork()函数：</p>
+<ul>
+<li><p>一次调用，两次返回。父进程返回子进程的pid，子进程返回0</p>
+</li>
+<li><p>同时复制父进程的缓冲区。</p>
+</li>
+<li>写时拷贝：刚产生时共用一部分空间，对子进程操作时才申请新的资源。</li>
+</ul>
+</blockquote>
+<h3 id="进程终止"><a href="#进程终止" class="headerlink" title="进程终止"></a>进程终止</h3><ul>
+<li>子进程使用了超过它所分配到的资源</li>
+<li>分配给子进程的任务已不再需要</li>
+<li>父进程退出</li>
+</ul>
+<p>级联终止：父进程终止时所有子进程也终止</p>
+<p>也可以使所有子进程以init进程作为父进程</p>
+<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ul>
+<li>信息共享</li>
+<li>提高运算速度</li>
+<li>模块化</li>
+<li>方便</li>
+</ul>
+<h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><p>向共享内存区域读或写入数据来交换信息。</p>
+<p>需要程序员明确编写访问和操作共享内存的代码</p>
+<p>更快（仅在建立共享内存区时需要系统调用，建立之后所有的访问都是常规的内存访问）</p>
+<p>典型：<strong>生产者-消费者问题</strong></p>
+<h3 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h3><p>通过在协作进程间交换信息来实现通信。</p>
+<p>由操作系统提供机制</p>
+<p>对于交换少量数据有效，不需要避免冲突。</p>
+<p>更容易实现</p>
+<h4 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h4><ol>
+<li>直接通信需要每个进程明确命名接受者或发送者</li>
+<li>间接通信通过邮箱或端口发送和接收消息</li>
+</ol>
+<h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><p>阻塞（同步）与非阻塞（异步）</p>
+<h4 id="缓冲"><a href="#缓冲" class="headerlink" title="缓冲"></a>缓冲</h4><ul>
+<li>零容量：没有缓冲的消息系统，只能阻塞发送</li>
+<li>有限容量：自动缓冲，线路满时阻塞发送</li>
+<li>无限容量：自动缓冲</li>
+</ul>
+<h1 id="线程（CPU使用的基本单元）"><a href="#线程（CPU使用的基本单元）" class="headerlink" title="线程（CPU使用的基本单元）"></a>线程（CPU使用的基本单元）</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由线程ID、程序计数器、寄存器集合和栈组成，与统一进程的其他线程共享代码段、数据段和其他操作系统资源。</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>响应度高</li>
+<li>资源共享</li>
+<li>经济</li>
+<li>多处理器体系结构的利用：加强了并发功能</li>
+</ul>
+<h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2><p><strong>用户线程</strong>受内核支持，而无需内核管理（创建快）；<strong>内核线程</strong>有操作系统直接管理和支持。</p>
+<h3 id="多对一模型"><a href="#多对一模型" class="headerlink" title="多对一模型"></a>多对一模型</h3><p>将许多用户级线程映射到一个内核线程，效率比较高。</p>
+<p>但是任意时刻只有一个线程能访问内核，因此也无法运行在多处理器上。</p>
+<h3 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a>一对一模型</h3><p>将每个用户线程映射到一个内核线程。</p>
+<p>在一个线程执行阻塞系统调用时，能允许另一个线程继续执行。可以让多个线程并行地运行在多处理器系统上。</p>
+<p>每有一个用户线程就要创建一个相应的内核线程，因此限制了系统所支持的线程数量。</p>
+<h3 id="多对多模型"><a href="#多对多模型" class="headerlink" title="多对多模型"></a>多对多模型</h3><p>多路复用了许多用户线程到同样数量或更小数量的内核上。</p>
+<p>开发人员可创建任意多的用户线程，并且相应内核线程能在多处理器上并发执行；而且当一个线程执行阻塞系统调用时，内核能调度另一个线程来执行。</p>
+<h3 id="二级模型（混合模型）"><a href="#二级模型（混合模型）" class="headerlink" title="二级模型（混合模型）"></a>二级模型（混合模型）</h3><p>多对多模型的变种，在多路复用的同时允许将一个用户线程绑定到某个内核线程上。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>linux系统同时提供了fork() 和clone() 创建线程。</li>
+<li>linux系统并不区分进程和线程，统一称之为任务。</li>
+</ul>
+<h1 id="CPU调度"><a href="#CPU调度" class="headerlink" title="CPU调度"></a>CPU调度</h1><p>调度对象：进程（以及线程）</p>
+<p>从就绪进程队列中选择一个进程。</p>
+<h2 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h2><h3 id="CPU-I-O区间周期"><a href="#CPU-I-O区间周期" class="headerlink" title="CPU-I/O区间周期"></a>CPU-I/O区间周期</h3><p>进程执行由CPU执行和I/O等待周期组成，进程在这两个状态之间切换。</p>
+<p>进程执行从CPU区间开始，在这之后是I/O区间。最终，最后的CPU区间通过系统请求终止执行。</p>
+<h3 id="CPU调度程序"><a href="#CPU调度程序" class="headerlink" title="CPU调度程序"></a>CPU调度程序</h3><h3 id="抢占调度"><a href="#抢占调度" class="headerlink" title="抢占调度"></a>抢占调度</h3><p>CPU调度决策可在如下4种环境下发生：</p>
+<ul>
+<li>当一个进程从运行状态切换到等待状态</li>
+<li>当一个进程从运行状态切换到就绪状态</li>
+<li>当一个进程从等待状态切换到就绪状态</li>
+<li>当一个进程终止时</li>
+</ul>
+<p>对于第1和第4种情况，没有选择而只有调度，一个新进程必须被执行。</p>
+<p>当调度只能发生在第1和第4两种情况下时，称调度方案是非抢占的或协作的；否则，称调度方案是抢占的。</p>
+<h3 id="分派程序"><a href="#分派程序" class="headerlink" title="分派程序"></a>分派程序</h3><p>用来将CPU的控制交给由短期调度程序选择的进程，功能包括：</p>
+<ul>
+<li>切换上下文</li>
+<li>切换到用户模式</li>
+<li>跳转到用户程序的合适位置，以重新启动进程</li>
+</ul>
+<p>分派程序在每次进程切换时都要使用。分派程序停止一个进程而启动另一个所要花费的时间称为分派延迟。</p>
+<h2 id="调度准则"><a href="#调度准则" class="headerlink" title="调度准则"></a>调度准则</h2><ul>
+<li>CPU使用率：需要使CPU尽可能忙。40%（轻负荷系统）~90%（重负荷系统）</li>
+<li>吞吐量（一个时间单元内完成进程的数量）</li>
+<li>周转时间：从进程提交到进程完成的时间段。所有时间段之和，包括等待进入内存、在就绪队列中等待、在CPU上执行和IO执行</li>
+<li>等待时间：在就绪队列中等待所划分时间之和</li>
+<li>响应时间：对交互系统，从提交请求到产生第一响应的时间。</li>
+</ul>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><h3 id="先到先服务调度算法（FCFS）"><a href="#先到先服务调度算法（FCFS）" class="headerlink" title="先到先服务调度算法（FCFS）"></a>先到先服务调度算法（FCFS）</h3><ul>
+<li>实现简单</li>
+<li>平均等待时间通常不是最小，受进程CPU区间时间变化影响大</li>
+<li>存在<strong>护航效果</strong>，即所有其他进程等待一个大进程释放CPU，导致CPU和设备的使用率低下</li>
+<li>非抢占式</li>
+</ul>
+<h3 id="最短作业优先调度（SJF）"><a href="#最短作业优先调度（SJF）" class="headerlink" title="最短作业优先调度（SJF）"></a>最短作业优先调度（SJF）</h3><ul>
+<li>将每个进程与其下一个CPU区间段相关联。当CPU空闲时，它会赋给具有最短CPU区间的进程。</li>
+<li>理论上最优的方法</li>
+<li>困难在于如何知道下一个CPU区间的长度</li>
+<li>可以是抢占的或非抢占的，抢占SJF算法称为<strong>最短剩余时间优先调度</strong></li>
+</ul>
+<h3 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h3><ul>
+<li>每个进程都有一个优先级与其关联，具有最高优先级的进程会分配到CPU。</li>
+<li>优先级可以通过内部或者外部方式来定义</li>
+<li>优先调度可以是抢占的或非抢占的</li>
+<li>主要问题是<strong>无穷阻塞（饥饿）</strong>：低优先级进程无穷等待CPU，可以通过<strong>老化</strong>（逐渐增加在系统中等待很长时间的进程的优先级）解决</li>
+</ul>
+<h3 id="轮转法（RR）"><a href="#轮转法（RR）" class="headerlink" title="轮转法（RR）"></a>轮转法（RR）</h3><ul>
+<li>定义一个较小时间单元，称为时间片。CPU调度程序循环就绪队列，为每个进程分配不超过一个时间片的CPU</li>
+<li>如果当前运行进程的CPU区间比时间片要长，定时器会中断并产生操作系统中断，然后进行上下文切换，将进程加入到就绪队列的尾部。</li>
+<li>平均等待时间较长</li>
+<li>可抢占的</li>
+<li>时间片太小，平均周转时间长，而且上下文切换的消耗大；时间片太大，RR有可能变成FCFS调度。80%的CPU时间应小于时间片。</li>
+</ul>
+<h3 id="多级队列调度"><a href="#多级队列调度" class="headerlink" title="多级队列调度"></a>多级队列调度</h3><ul>
+<li>将就绪队列分成多个独立队列，一个进程被永久地分配到一个队列，每个队列有自己的调度算法</li>
+<li>队列之间必须有调度，可以采用固定优先级抢占调度或者划分时间片。</li>
+<li>低调度开销</li>
+<li>不够灵活</li>
+</ul>
+<h3 id="多级反馈队列调度"><a href="#多级反馈队列调度" class="headerlink" title="多级反馈队列调度"></a>多级反馈队列调度</h3><ul>
+<li>允许进程在队列之间移动。如果进程使用了过多CPU时间，那么它会被转移到更低优先级队列。此外，在较低优先级队列中等待较长时间的进程会被转移到更高优先级队列。</li>
+<li>最通用也是最复杂的CPU调度算法</li>
+</ul>
+<h2 id="多处理器调度"><a href="#多处理器调度" class="headerlink" title="多处理器调度"></a>多处理器调度</h2>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/学习笔记/">学习笔记</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2019/04/09/操作系统概念复习总结/" data-title="操作系统概念复习总结 | uuweidy&#39;s world" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/03/27/数据结构与算法复习总结/"  title="数据结构与算法复习总结">
+ <strong>下一篇：</strong><br/> 
+ <span>数据结构与算法复习总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#导论"><span class="toc-number">1.</span> <span class="toc-text">导论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机系统体系结构"><span class="toc-number">1.1.</span> <span class="toc-text">计算机系统体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单处理器系统"><span class="toc-number">1.1.1.</span> <span class="toc-text">单处理器系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多处理器系统"><span class="toc-number">1.1.2.</span> <span class="toc-text">多处理器系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#非对称多处理"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">非对称多处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#对称多处理（SMP）"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">对称多处理（SMP）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集群系统"><span class="toc-number">1.1.3.</span> <span class="toc-text">集群系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作系统结构"><span class="toc-number">2.</span> <span class="toc-text">操作系统结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统服务"><span class="toc-number">2.1.</span> <span class="toc-text">操作系统服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统调用"><span class="toc-number">2.2.</span> <span class="toc-text">系统调用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统调用类型"><span class="toc-number">2.2.1.</span> <span class="toc-text">系统调用类型*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟机"><span class="toc-number">2.3.</span> <span class="toc-text">虚拟机</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建虚拟机的原因"><span class="toc-number">2.3.1.</span> <span class="toc-text">创建虚拟机的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">2.3.2.</span> <span class="toc-text">优点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#进程（CPU资源分配的基本单元）"><span class="toc-number">3.</span> <span class="toc-text">进程（CPU资源分配的基本单元）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">3.1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程状态"><span class="toc-number">3.1.1.</span> <span class="toc-text">进程状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程控制块（PCB，进程存在的唯一标志）"><span class="toc-number">3.1.2.</span> <span class="toc-text">进程控制块（PCB，进程存在的唯一标志）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程"><span class="toc-number">3.1.3.</span> <span class="toc-text">线程*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程调度"><span class="toc-number">3.2.</span> <span class="toc-text">进程调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调度队列"><span class="toc-number">3.2.1.</span> <span class="toc-text">调度队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调度程序"><span class="toc-number">3.2.2.</span> <span class="toc-text">调度程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上下文切换"><span class="toc-number">3.2.3.</span> <span class="toc-text">上下文切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程操作"><span class="toc-number">3.3.</span> <span class="toc-text">进程操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进程创建"><span class="toc-number">3.3.1.</span> <span class="toc-text">进程创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程终止"><span class="toc-number">3.3.2.</span> <span class="toc-text">进程终止</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程间通信"><span class="toc-number">3.4.</span> <span class="toc-text">进程间通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#共享内存"><span class="toc-number">3.4.1.</span> <span class="toc-text">共享内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#消息传递"><span class="toc-number">3.4.2.</span> <span class="toc-text">消息传递</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#命名"><span class="toc-number">3.4.2.1.</span> <span class="toc-text">命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同步"><span class="toc-number">3.4.2.2.</span> <span class="toc-text">同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缓冲"><span class="toc-number">3.4.2.3.</span> <span class="toc-text">缓冲</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#线程（CPU使用的基本单元）"><span class="toc-number">4.</span> <span class="toc-text">线程（CPU使用的基本单元）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">4.1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">4.1.1.</span> <span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多线程模型"><span class="toc-number">4.2.</span> <span class="toc-text">多线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#多对一模型"><span class="toc-number">4.2.1.</span> <span class="toc-text">多对一模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一对一模型"><span class="toc-number">4.2.2.</span> <span class="toc-text">一对一模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多对多模型"><span class="toc-number">4.2.3.</span> <span class="toc-text">多对多模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二级模型（混合模型）"><span class="toc-number">4.2.4.</span> <span class="toc-text">二级模型（混合模型）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-number">4.3.</span> <span class="toc-text">其它</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CPU调度"><span class="toc-number">5.</span> <span class="toc-text">CPU调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念-1"><span class="toc-number">5.1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-I-O区间周期"><span class="toc-number">5.1.1.</span> <span class="toc-text">CPU-I/O区间周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU调度程序"><span class="toc-number">5.1.2.</span> <span class="toc-text">CPU调度程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抢占调度"><span class="toc-number">5.1.3.</span> <span class="toc-text">抢占调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分派程序"><span class="toc-number">5.1.4.</span> <span class="toc-text">分派程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度准则"><span class="toc-number">5.2.</span> <span class="toc-text">调度准则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调度算法"><span class="toc-number">5.3.</span> <span class="toc-text">调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先到先服务调度算法（FCFS）"><span class="toc-number">5.3.1.</span> <span class="toc-text">先到先服务调度算法（FCFS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最短作业优先调度（SJF）"><span class="toc-number">5.3.2.</span> <span class="toc-text">最短作业优先调度（SJF）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先级调度"><span class="toc-number">5.3.3.</span> <span class="toc-text">优先级调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#轮转法（RR）"><span class="toc-number">5.3.4.</span> <span class="toc-text">轮转法（RR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多级队列调度"><span class="toc-number">5.3.5.</span> <span class="toc-text">多级队列调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多级反馈队列调度"><span class="toc-number">5.3.6.</span> <span class="toc-text">多级反馈队列调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多处理器调度"><span class="toc-number">5.4.</span> <span class="toc-text">多处理器调度</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/学习笔记/" title="学习笔记">学习笔记<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日常生活/" title="日常生活">日常生活<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/总结/" title="总结">总结<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/胡言乱语/" title="胡言乱语">胡言乱语<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="uuweidy">uuweidy</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
