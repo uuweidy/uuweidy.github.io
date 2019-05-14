@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="uuweidy" />
+
+
+
+<meta name="description" content="本人对于大学期间《操作系统》课程的所做复习时的一些总结，包含内存管理和存储管理 完成">
+<meta name="keywords" content="学习笔记,操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统概念复习总结(2)">
+<meta property="og:url" content="http://uuweidy.github.io/2019/05/14/操作系统概念复习总结-2/index.html">
+<meta property="og:site_name" content="uuweidy&#39;s world">
+<meta property="og:description" content="本人对于大学期间《操作系统》课程的所做复习时的一些总结，包含内存管理和存储管理 完成">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-14T12:53:27.934Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统概念复习总结(2)">
+<meta name="twitter:description" content="本人对于大学期间《操作系统》课程的所做复习时的一些总结，包含内存管理和存储管理 完成">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="uuweidy&#39;s world" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>操作系统概念复习总结(2) | uuweidy&#39;s world</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/author.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">uuweidy</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:975397847@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/uuweidy" title="GitHub"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=335297551" title="网易云音乐"></a>
+                            
+                                <a class="fa bilibili" href="https://space.bilibili.com/4474041" title="bilibili"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Andriod-Studio/">Andriod Studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装配置/">安装配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日常生活/">日常生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/胡言乱语/">胡言乱语</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">uuweidy</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/author.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">uuweidy</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:975397847@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/uuweidy" title="GitHub"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=335297551" title="网易云音乐"></a>
+                            
+                                <a class="fa bilibili" target="_blank" href="https://space.bilibili.com/4474041" title="bilibili"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-操作系统概念复习总结-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/14/操作系统概念复习总结-2/" class="article-date">
+      <time datetime="2019-05-14T12:51:42.000Z" itemprop="datePublished">2019-05-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      操作系统概念复习总结(2)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>本人对于大学期间《操作系统》课程的所做复习时的一些总结，包含内存管理和存储管理</p>
+<p>完成</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><h3 id="逻辑地址空间与物理地址空间"><a href="#逻辑地址空间与物理地址空间" class="headerlink" title="逻辑地址空间与物理地址空间"></a>逻辑地址空间与物理地址空间</h3><ul>
+<li>CPU所生成的地址为<code>逻辑地址</code>，内存单元所看到的地址为<code>物理地址</code></li>
+<li>运行时从虚拟地址到物理地址的映射是由<code>内存管理单元</code>完成的。用户的进程所生成的地址（即逻辑地址）在送交内存之前会加上<code>基地址寄存器（重定位寄存器）</code>的值变成物理地址。</li>
+<li>用户只生成逻辑地址，并且认为进程的地址空间为0到max</li>
+</ul>
+<h3 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h3><ul>
+<li>采用动态加载时，一个子程序只有在调用时才被加载，所有子程序都以可重定位的形式保存在磁盘上。</li>
+<li>不用的子程序绝不会被加载</li>
+</ul>
+<h3 id="动态链接与共享库"><a href="#动态链接与共享库" class="headerlink" title="动态链接与共享库"></a>动态链接与共享库</h3><p>动态链接与动态加载相似，但是是将链接延迟到运行时。</p>
+<h3 id="连续内存分配"><a href="#连续内存分配" class="headerlink" title="连续内存分配"></a>连续内存分配</h3><p>每个进程位于一个连续的内存区域</p>
+<p>重定位寄存器有最小的物理地址；界限地址寄存器有逻辑地址的范围值。</p>
+<p>MMU动态地将逻辑地址（小于界限地址寄存器的值）加上重定位寄存器的值后映射成物理地址，送交内存单元</p>
+<h4 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h4><ul>
+<li>将内存分为多个<code>固定大小</code>的分区。当一个分区空闲时，从输入队列中选择一个进程调入到空闲分区</li>
+<li>可变分区<ul>
+<li>操作系统有一个表用于记录哪些内存可用。当有新进程需要内存时，为该进程查找足够大的<code>孔</code></li>
+<li>通常一组不同大小的孔分散在内存中。分配孔时，如果孔太大，那么就会分为两块：一块分配给新进程，另一块还回到孔集合。当进程终止、释放内存时，这块内存会被还回孔集合。如果新孔与其他孔相邻，那么将这些孔合并成大孔。</li>
+<li>分配方法：<ul>
+<li><code>首次适应</code>：分配第一个足够大的孔。可以从头开始，也可以从上次首次适应结束时开始</li>
+<li><code>最佳适应</code>：分配最小的足够大的孔。必须遍历列表（除非列表按大小排列）。可以产生最小剩余孔</li>
+<li><code>最差适应</code>：分配最大的孔。必须遍历列表（除非列表按大小排列）。产生的最大剩余孔可能会比最小剩余孔更加有用。</li>
+<li>在执行时间和利用空间方面，首次适应和最佳适应都要好于最差适应；首次适应方法更快。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h4><p>首次适应方法和最佳适应方法都会产生<code>外部碎片</code>问题：所有总的可用内存之和可以满足请求但是并不连续。</p>
+<p>可以使用<code>紧缩</code>解决问题，但是紧缩并非总是可能的。</p>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>允许进程的物理地址空间可以是<strong>非连续的</strong>，避免了将不同大小的内存块匹配到交换空间上这样的麻烦。</p>
+<h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><p>将物理内存分为固定大小的<code>帧</code>，将逻辑内存分为同样大小的<code>页</code>。当需要执行进程时，它的页会从备份存储中调入到可用的内存帧中。</p>
+<p>由CPU生成的每个地址分为两个部分：<strong>页号（p）</strong>和<strong>页偏移（d）</strong>。页号作为<code>页表</code>的索引。页表包含每页所在物理地址的基地址，这些基地址与页偏移的组合就形成了物理地址。</p>
+<p>如果逻辑地址空间为2^m^，且页大小为2^n^单元（字节或字），那么逻辑地址的高m-n位表示页号（p），而低n位表示页偏移（d）。</p>
+<p>分页属于一种<strong>动态重定位</strong>。</p>
+<p>采用分页技术不会产生外部碎片，每个帧都可以分配给需要它的进程；但是分页有<code>内部碎片</code>，即某些被分配的帧用不完。</p>
+<h3 id="硬件支持——TLB"><a href="#硬件支持——TLB" class="headerlink" title="硬件支持——TLB"></a>硬件支持——TLB</h3><p><code>转换表缓冲区（translation look-aside buffer）</code>，条目由两部分组成：键和值。当关联内存根据给定值查找时，它会同时与所有键进行比较。如果找到条目，那么就得到相应的值域。这种查找方式比较快。</p>
+<p>TLB只包括页表中的一小部分条目。当CPU产生逻辑地址后，页号提交给TLB。如果找到页号，那么就得到了帧号，并可用来访问内存。</p>
+<p>如果页码不在TLB中（称为<strong>TLB失效</strong>），那么就需要访问页表，同时将页号和帧号添加到TLB中。</p>
+<h3 id="保护"><a href="#保护" class="headerlink" title="保护"></a>保护</h3><p>在分页环境下，内存保护是通过与每个帧相关联的保护位来实现的。可以用一个位来定义一个页是可读写的还是只读的。还有一个位与页表中的每一条目相关联：<code>有效-无效位</code>，当该位有效时，表示相关的页在进程的逻辑地址空间内。</p>
+<h3 id="共享页"><a href="#共享页" class="headerlink" title="共享页*"></a>共享页*</h3><h2 id="页表结构"><a href="#页表结构" class="headerlink" title="页表结构"></a>页表结构</h2><h3 id="层次页表"><a href="#层次页表" class="headerlink" title="层次页表"></a>层次页表</h3><p>在现代计算机支持大逻辑地址空间的情况下，页表本身也会非常大，在内存中连续地分配一个页表是不可能的。</p>
+<p>一个简单的方法是将页表划分为更小部分。</p>
+<h4 id="两级分页算法"><a href="#两级分页算法" class="headerlink" title="两级分页算法"></a>两级分页算法</h4><p>将页表再分页，把20位的p拆分成10位的p~1~和10位的p~2~，p~1~用来访问外部页表，p~2~是外部页表的页偏移。</p>
+<h4 id="哈希页表"><a href="#哈希页表" class="headerlink" title="哈希页表"></a>哈希页表</h4><p>处理超过32位地址空间的常用方法。将虚拟页码作为哈希值。</p>
+<p>哈希页表的每一条目都包括一个链表的元素，这些元素哈希成同一位置。</p>
+<h4 id="反向页表"><a href="#反向页表" class="headerlink" title="反向页表"></a>反向页表</h4><p>通常每个进程都有一个相关页表。进程通过页的虚拟地址来引用页，操作系统将这种引用转换成虚拟物理地址。缺点是每个页表可能有很多项，这些表可能消耗了大量物理内存（但是可能存储了无效的信息）。</p>
+<p><code>反向页表</code>对于每个真正的内存页或帧才有一个条目。每个条目包含保存在真正内存位置的页的虚拟地址以及拥有该页的进程的信息。因此，整个系统只有一个页表，对每个物理内存的页只有一条相应的条目。</p>
+<p>每个虚拟地址有一个三元组<process-id, page-number,="" offset="">，每个反向页表的条目为一对<process-id, page-number="">，其中process-id用来作为地址空间的标识符。当需要内存引用时，虚拟地址的<process-id, page-number="">部分被送交内存，通过查找反向页表来寻找匹配。如果匹配找到了条目i，那么就产生了物理地址<i, offset="">。如果没有匹配，那么就是试图进行非法地址访问。</i,></process-id,></process-id,></process-id,></p>
+<p>反向页表与普通页表的区别：</p>
+<ul>
+<li>反向页表中帧是按顺序排列的，页号码是乱序的；页表按页号码排列，对应的帧是乱序的</li>
+<li>反向页表的offset代表帧号；页表offset是页号</li>
+</ul>
+<h2 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h2><p>从用户视角管理内存的方案。逻辑地址空间由一组段组成。每个段有名称和长度。地址指定了段名称和段内偏移。用户通过两个量来指定地址（而在分页中，用户只指定一个地址，将地址分为页码和偏移的工作是由硬件来完成的）。</p>
+<h3 id="段表"><a href="#段表" class="headerlink" title="段表"></a>段表</h3><p>每个条目有<code>段基地址</code>和<code>段界限</code>。段基地址包含该段在内存中的开始物理地址，段界限指定该段的长度。</p>
+<h3 id="Intel平台的逻辑地址到物理地址的转换过程"><a href="#Intel平台的逻辑地址到物理地址的转换过程" class="headerlink" title="Intel平台的逻辑地址到物理地址的转换过程"></a>Intel平台的逻辑地址到物理地址的转换过程</h3><blockquote>
+<p>上课时的作业</p>
+</blockquote>
+<p>Intel平台有两种模式，在实模式下，逻辑地址就等于物理地址，此时并不进行分段或分页的转换；而在平面模式，intel支持分段与分页两种机制，CPU产生的地址从逻辑地址到物理地址变换中经过了两个阶段:第一阶段使用分段机制把程序的逻辑地址变换成线性地址。第二阶段的分页机制把线性地址转换成物理地址。第二阶段的分页机制是可选择的。如果没有开启分页机制，那么分段机制产生的线性地址空间就直接映射到处理器的物理地址空间上。</p>
+<h4 id="分段机制"><a href="#分段机制" class="headerlink" title="分段机制"></a>分段机制</h4><p>分段机制是为了解决用户视角与实际物理内存的不一致而产生的，它提供了隔绝各个代码段、数据、堆栈区域的机制，因此多个进程可以运行在同一个处理器上而不会相互干扰。</p>
+<p>分段机制的逻辑地址空间是由一组段组成的，每个段有自己的名称和长度。从逻辑地址到线性地址的转换需要使用段表，段表的每个条目由段基地址和段界限组成。</p>
+<p>当进程产生一个逻辑地址时，它被分为段号s和段内偏移d两个部分。段号s作为段表的索引，而段内偏移d应当低于对应的段界限（否则会出现段错误）。当段内偏移d合法时，将段内偏移与得到的段基地址相加，就得到了该逻辑地址对应的线性地址。</p>
+<p>若使用纯分段机制，那么线性地址就等于物理地址。</p>
+<blockquote>
+<p>例如，有一个逻辑地址为0430，那么可知这个逻辑地址属于0段。对应某个段表得到0段的基地址为219，段界限为600。那么这个逻辑地址未越界，所以它对应的线性地址就是219+430=649。</p>
+</blockquote>
+<h4 id="分页机制"><a href="#分页机制" class="headerlink" title="分页机制"></a>分页机制</h4><p>分页与分段不同，它不是为了满足用户的需求、而是由于系统管理的需要，为减少碎片，提高内存利用率而所使用的一种机制。</p>
+<p>分页会将物理内存与逻辑内存分为同样大小的块，分别称为帧和页。当执行一个进程时，进程的页从备份内存中调入可用的帧中。</p>
+<p>与分段相似，分页机制也有自己的页表。页表包含每页所在物理内存的基地址。</p>
+<p>CPU生成的地址分为页号p与页内偏移d。页号作为页表的索引查询页的物理块号，当找到后，物理块号与页内偏移拼接（相当于物理块号×帧大小+页内偏移）就得到了物理地址，这个过程与分段机制将逻辑地址转化为线性地址是相似的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">  start(&quot;CPU&quot;) --逻辑地址:段内--&gt; block1(&quot;分段单元&quot;)</span><br><span class="line">  block1 --线性地址:段起始地址+逻辑地址--&gt; block2(&quot;分页单元&quot;)</span><br><span class="line">  block2 --物理地址--&gt; exit(&quot;物理内存&quot;)</span><br></pre></td></tr></table></figure>
+<h1 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h1><p>在许多情况下并不需要将整个程序放到内存中：</p>
+<ul>
+<li>程序的处理异常错误条件的代码</li>
+<li>数组、链表和表分配了比实际需要更多的内存</li>
+<li>程序的某些选项或功能可能很少使用</li>
+</ul>
+<p>执行只有部分在内存中的程序可带来很多好处：</p>
+<ul>
+<li>程序不再受现有的物理内存空间限制</li>
+<li>更多的程序可以同时执行，提高了CPU使用率而响应时间或周转时间不增加</li>
+<li>用户程序会运行得更快，因为载入或交换每个用户程序到内存内所需的I/O会更少</li>
+</ul>
+<p><code>虚拟内存</code>将用户逻辑内存与物理内存分开。这在现有物理内存有限的情况下，为程序员提供了巨大的虚拟内存</p>
+<p>进程的<code>虚拟地址空间</code>就是进程在内存中存放的逻辑视图</p>
+<h2 id="按需调页"><a href="#按需调页" class="headerlink" title="按需调页"></a>按需调页</h2><p>在需要时才调入相应的页，从未访问的页不会调入到物理内存。</p>
+<p><code>懒惰交换</code>只有在需要页时才调入内存。由于将进程看做了一系列的页而不是一个大的连续空间</p>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>当换入进程时，调页程序推测在该进程再次换出之前会用到哪些页。——需要硬件支持来区分哪些页在内存里，哪些页在磁盘上。</p>
+<p>当进程试图访问尚未调入内存的页时会产生<code>页错误陷阱</code>。</p>
+<ul>
+<li>检查进程的内部页表</li>
+<li>引用非法时终止进程，引用合法但是尚未调入页面，那么就应该调入。</li>
+<li>找到一个空闲帧</li>
+<li>调度一个磁盘操作以便将所需要的页调入刚分配的帧</li>
+<li>磁盘读操作完成后修改进程的内部表和页表以表示该页已在内存中</li>
+<li>重新开始中断的指令</li>
+</ul>
+<p>当所有的页不在内存中就开始执行进程，那么进程会不断地出现页错误直到所有所需的页均在内存中，这种方案称为<code>纯粹按需调页</code></p>
+<h2 id="页面置换"><a href="#页面置换" class="headerlink" title="页面置换"></a>页面置换</h2><p>针对特定内存引用序列，运行某个置换算法，并计算出页错误的数量。</p>
+<h3 id="Belady异常"><a href="#Belady异常" class="headerlink" title="Belady异常"></a>Belady异常</h3><p>分配更多的帧却导致了更高的缺页率。</p>
+<h3 id="FIFO页置换"><a href="#FIFO页置换" class="headerlink" title="FIFO页置换"></a>FIFO页置换</h3><p>为每个页记录该页调入内存的时间（可以直接放入FIFO队列中），当必须置换一页时，选择最旧的页。</p>
+<p>性能并不总是很好</p>
+<h3 id="最优置换（OPT或MIN）"><a href="#最优置换（OPT或MIN）" class="headerlink" title="最优置换（OPT或MIN）"></a>最优置换（OPT或MIN）</h3><p>所有算法中产生页错误率最低、且绝对没有Belady异常的算法。</p>
+<p>难以实现，主要用于比较研究</p>
+<h3 id="LRU页置换"><a href="#LRU页置换" class="headerlink" title="LRU页置换"></a>LRU页置换</h3><p><code>最近最少使用算法(Least-Recently-Used)</code></p>
+<p>为每个页关联该页上次使用的时间。当必须置换一页时，LRU选择最长时间没有使用的页。</p>
+<p>同样没有Belady异常</p>
+<p>需要TLB以外的硬件支持</p>
+<h3 id="近似LRU页置换"><a href="#近似LRU页置换" class="headerlink" title="近似LRU页置换"></a>近似LRU页置换</h3><p>页表内的每项都关联着一个引用位。每当引用一个页时，相应页表的引用位就会清零。这样，虽然不知道使用顺序，但是知道哪些页用过而哪些页未用过。</p>
+<h4 id="附加引用位算法"><a href="#附加引用位算法" class="headerlink" title="附加引用位算法"></a>附加引用位算法</h4><p>引用位8位，每过一定时间，引用位右移一位，这样引用位包含了该页在最近8个时间周期内的使用情况。</p>
+<h4 id="二次机会算法"><a href="#二次机会算法" class="headerlink" title="二次机会算法"></a>二次机会算法</h4><p>基本算法是FIFO算法。当要选择一个页时，检查引用位。如果值为0，那么直接置换该页；如果引用位为1，那么就将引用位清零并选择下一个FIFO页。</p>
+<h4 id="增强型二次机会算法"><a href="#增强型二次机会算法" class="headerlink" title="增强型二次机会算法"></a>增强型二次机会算法</h4><p>通过将引用位和修改位作为一对有序对来考虑，共有四种可能：</p>
+<ol>
+<li>（0，0）——用于置换的最佳页</li>
+<li>（0，1）——在置换之前需要将页写出到磁盘</li>
+<li>（1，0）——有可能很快又要被使用</li>
+<li>（1，1）——有可能很快又要被使用，并且在置换之前需要将页写出到磁盘</li>
+</ol>
+<h3 id="基于计数的页置换"><a href="#基于计数的页置换" class="headerlink" title="基于计数的页置换"></a>基于计数的页置换</h3><p>以下两种算法都不常用。实现费时而且不能很好地近似OPT置换算法</p>
+<h4 id="最不经常使用页置换算法（LFU）"><a href="#最不经常使用页置换算法（LFU）" class="headerlink" title="最不经常使用页置换算法（LFU）"></a>最不经常使用页置换算法（LFU）</h4><p>要求置换计数最小的页。活动页应该有更大的引用次数。</p>
+<p>刚开始时使用很多的页不会被置换；刚换入的页可能会被置换</p>
+<h4 id="最常使用页置换算法（MFU）"><a href="#最常使用页置换算法（MFU）" class="headerlink" title="最常使用页置换算法（MFU）"></a>最常使用页置换算法（MFU）</h4><h2 id="帧分配"><a href="#帧分配" class="headerlink" title="帧分配"></a>帧分配</h2><h3 id="平均分配"><a href="#平均分配" class="headerlink" title="平均分配"></a>平均分配</h3><p>在n个进程之间分配m个帧的最为容易的方法是给每个一个平均値</p>
+<h3 id="比例分配"><a href="#比例分配" class="headerlink" title="比例分配"></a>比例分配</h3><p>根据进程大小将可用内存分配给每个进程</p>
+<h3 id="优先级分配"><a href="#优先级分配" class="headerlink" title="优先级分配"></a>优先级分配</h3><h3 id="全局分配与局部分配"><a href="#全局分配与局部分配" class="headerlink" title="全局分配与局部分配"></a>全局分配与局部分配</h3><p>当有多个进程竞争帧时，全局置换允许一个进程从所有帧集合中选择一个置换帧，而不管该帧是否已经分配给其他进程。</p>
+<p>全局分配的问题是进程不能控制其页错误率；局部分配的问题是系统吞吐量较低</p>
+<h2 id="系统颠簸"><a href="#系统颠簸" class="headerlink" title="系统颠簸"></a>系统颠簸</h2><p><code>颠簸</code>：进程的所有页都在活跃使用，这样会一而再地产生页错误，频繁进行页调度</p>
+<p>如果一个进程在换页上用的时间要多于执行时间，那么这个进程就在颠簸</p>
+<h3 id="系统颠簸的原因"><a href="#系统颠簸的原因" class="headerlink" title="系统颠簸的原因"></a>系统颠簸的原因</h3><p>CPU使用率低时，系统会引入新进程以增加使用率。随着进程的增多，一个进程从其他进程得到帧，这样大量的时间用于调页设备换进和换出页，CPU使用率进一步降低。</p>
+<h3 id="工作集合模型"><a href="#工作集合模型" class="headerlink" title="工作集合模型"></a>工作集合模型</h3><p><code>工作集合策略</code>研究一个进程实际正在使用多少帧。这种方法定义了进程执行的<code>局部模型</code>。</p>
+<p><em>局部模型说明，当进程进程执行时，它从一个局部移向另一个局部（经常使用页的集合）。</em></p>
+<p>$\Delta$作为工作集合窗口。检查最近$\Delta$个页的引用，这最近$\Delta$个页的集合称为<code>工作集合</code>。如果一个页正在使用，那么它就在工作集合内。如果它不再使用，那么它会在其上次引用的$\Delta$时间单位后从工作集合中删除。这样，工作集合是程序局部的近似。</p>
+<p>确定$\Delta$之后，系统跟踪每个进程的工作集合，并为进程分配大于其工作集合的帧数，如果还有空闲帧，则启动另一进程。</p>
+<h3 id="页错误频率"><a href="#页错误频率" class="headerlink" title="页错误频率"></a>页错误频率</h3><p>为所期望的页错误率设置上限和下限，如果实际页错误率超过上限，那么为进程分配更多的帧；如果实际页错误率低于下限，那么可以从该进程中移走帧。</p>
+<h2 id="内存映射文件"><a href="#内存映射文件" class="headerlink" title="内存映射文件"></a>内存映射文件</h2><p>把文件I/O作为普通内存访问</p>
+<h3 id="基本机制"><a href="#基本机制" class="headerlink" title="基本机制"></a>基本机制</h3><p>将磁盘块映射成内存的页。开始的文件访问按照普通请求页面调度来进行，产生页错误调入一页大小的部分文件。之后文件的读写按照通常的内存访问来处理而不是使用系统调用，简化了文件访问和使用。</p>
+<h2 id="内核内存的分配"><a href="#内核内存的分配" class="headerlink" title="内核内存的分配"></a>内核内存的分配</h2><p>内核内存的分配是从空闲内存池内获取的，因为内核需要为不同大小的数据结构分配内存，必须谨慎使用内存；而且内存需要常驻在连续的物理页中。</p>
+<h3 id="Buddy系统"><a href="#Buddy系统" class="headerlink" title="Buddy系统"></a>Buddy系统</h3><p>从物理上连续的大小固定的段上进行分配。内存按2的幂的大小来进行分配。</p>
+<p>优点是可以通过合并而快速地形成更大的段，缺点是内部碎片多</p>
+<h3 id="slab分配"><a href="#slab分配" class="headerlink" title="slab分配"></a>slab分配</h3><p>由一个或者多个物理上连续的页组成的。cache中含有一个或多个slab，每个内核数据结构都有一个cache，每个cache含有内核数据结构的对象实例。</p>
+<p>当创建cache时，起初包含若干标记为空闲的对象。对象的数量与slab的大小有关。</p>
+<p>slab分配器首先从部分空闲的slab进行分配，如果没有，则从空的slab进行分配，如没有，则从物理连续页上分配新的slab，并把它赋给一个cache，然后再从新slab分配空间。</p>
+<p>这种分配不会产生碎片；内存请求可以快速满足。</p>
+<h2 id="其他考虑"><a href="#其他考虑" class="headerlink" title="其他考虑"></a>其他考虑</h2><h3 id="预调页"><a href="#预调页" class="headerlink" title="预调页"></a>预调页</h3><p>纯按需调页系统的一个显著特性是当一个进程开始时会出现大量页错误。预调页试图同时将所需要的所有页一起调入到内存中。</p>
+<h3 id="页大小"><a href="#页大小" class="headerlink" title="页大小"></a>页大小</h3><p>影响页大小的因素</p>
+<ul>
+<li>页表大小</li>
+<li>内存利用率</li>
+<li>页读写时间</li>
+<li>页错误数量</li>
+</ul>
+<p>总地来说趋向更大的页。</p>
+<h1 id="文件系统管理"><a href="#文件系统管理" class="headerlink" title="文件系统管理"></a>文件系统管理</h1><p>操作系统中负责存放和管理信息的模块，它用统一的方式管理用户和系统信息的存储、检索、更新、共享和保护，并为用户提供一整套方便整个的文件使用和操作方法。</p>
+<p>文件管理的功能：</p>
+<ol>
+<li>外存空间管理</li>
+<li>目录管理</li>
+<li>文件读写操作</li>
+<li>存取权限控制</li>
+</ol>
+<p>文件系统功能：</p>
+<ol>
+<li>文件的按名存取（基本功能）</li>
+<li>文件目录的建立和保护</li>
+<li>实现逻辑文件到物理文件的转换（核心功能）</li>
+<li>文件存储空间的分配和管理</li>
+<li>提供一组用户使用的操作</li>
+</ol>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><p>文件是信息的逻辑集合，是逻辑外存的最小分配单元。属于<strong>抽象数据类型</strong></p>
+<h3 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h3><ul>
+<li>名称：唯一的</li>
+<li>标识符：标识文件系统内文件的唯一标签，通常为数字。</li>
+<li>类型</li>
+<li>位置</li>
+<li>大小</li>
+<li>保护</li>
+<li>时间、日期和用户标识</li>
+</ul>
+<p>所有文件的信息都保存在目录结构中，而目录结构也保存在外存上</p>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ul>
+<li>创建文件</li>
+<li>写文件</li>
+<li>读文件</li>
+<li>在文件内重定位</li>
+<li>截断文件</li>
+</ul>
+<p>以上是所需文件操作的最小集合</p>
+<p>操作系统维护一个<code>打开文件表</code>（包含所有打开文件的信息表）。当需要一个文件操作时通过该表的索引指定文件而不需要搜索。</p>
+<p>通常有两级内部表：单个进程的表和整个系统的表。单个进程表的每一条目相应地指向整个系统的打开文件表。整个系统表包含进程无关信息，如位置、访问日期和大小。</p>
+<p>每个打开文件有如下相关信息：</p>
+<ul>
+<li>文件指针</li>
+<li>文件打开计数器</li>
+<li>文件磁盘位置</li>
+<li>访问权限</li>
+<li>读写锁</li>
+</ul>
+<h2 id="访问方法"><a href="#访问方法" class="headerlink" title="访问方法"></a>访问方法</h2><h3 id="顺序访问"><a href="#顺序访问" class="headerlink" title="顺序访问"></a>顺序访问</h3><p>文件信息按照顺序，一个记录接着一个记录地加以处理。</p>
+<p>基于文件的磁带模型</p>
+<h3 id="直接访问"><a href="#直接访问" class="headerlink" title="直接访问"></a>直接访问</h3><p>文件由固定长度的逻辑记录组成，允许程序按任意顺序进行快速读写</p>
+<p>基于文件的磁盘模型</p>
+<h3 id="其他访问方式"><a href="#其他访问方式" class="headerlink" title="其他访问方式"></a>其他访问方式</h3><p>如索引存取，索引包含了各块的指针</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="单层结构目录"><a href="#单层结构目录" class="headerlink" title="单层结构目录"></a>单层结构目录</h3><p>所有的文件都包含在同一目录中。</p>
+<p>便于理解和支持</p>
+<p>每个文件必须有唯一名称</p>
+<p>查找耗时并且难以共享</p>
+<h3 id="双层结构目录"><a href="#双层结构目录" class="headerlink" title="双层结构目录"></a>双层结构目录</h3><p>为每个用户创建自己的<code>用户文件目录（UFD）</code></p>
+<p>解决了名称冲突问题</p>
+<p>有效地对用户加以隔离，同时不变共享</p>
+<h3 id="树状结构目录"><a href="#树状结构目录" class="headerlink" title="树状结构目录"></a>树状结构目录</h3><p>禁止共享文件和目录</p>
+<h3 id="无环图目录"><a href="#无环图目录" class="headerlink" title="无环图目录"></a>无环图目录</h3><p>直接创建一个指针</p>
+<h3 id="通用图目录"><a href="#通用图目录" class="headerlink" title="通用图目录"></a>通用图目录</h3><h1 id="文件系统实现"><a href="#文件系统实现" class="headerlink" title="文件系统实现"></a>文件系统实现</h1><h2 id="文件系统结构"><a href="#文件系统结构" class="headerlink" title="文件系统结构"></a>文件系统结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">  start(&quot;应用程序&quot;) --&gt; block1(&quot;逻辑文件系统&quot;)</span><br><span class="line">  block1 --&gt; block2(&quot;文件组织系统&quot;)</span><br><span class="line">  block2 --&gt; block3(&quot;基本文件系统（磁盘地址）&quot;)</span><br><span class="line">  block3 --&gt; block4(&quot;I/O控制&quot;)</span><br><span class="line">  block4 --&gt; exit(&quot;设备&quot;)</span><br></pre></td></tr></table></figure>
+<p><code>I/O控制</code>为最底层，由<code>设备驱动程序</code>和<code>中断处理程序</code>组成，实现内存和磁盘之间的信息传输</p>
+<p><code>基本文件系统</code>对buffer和cache进行管理释放以及替换，对磁盘上的物理块进行读写。</p>
+<p><code>文件组织模块</code>将逻辑块地址转换成物理块地址、包含空闲空间管理器</p>
+<p><code>逻辑文件系统</code>管理<code>元数据</code>（只有文件系统的结构数据而不含实际数据）。通过文件控制块来维护文件结构</p>
+<h2 id="虚拟文件系统（VFS）"><a href="#虚拟文件系统（VFS）" class="headerlink" title="虚拟文件系统（VFS）"></a>虚拟文件系统（VFS）</h2><p>文件系统实现包括三个主要层次，第一层为文件系统接口，第二层为VFS</p>
+<p>VFS通过定义一个清晰的VFS接口将文件系统的通用操作和具体实现分开。多个VFS接口的实现可以共存在同一台机器上，它允许访问已装在本地的多个类型的文件系统</p>
+<p>同时VFS提供了网络上唯一标识一个文件的机制。因此能区分本地文件和远程文件</p>
+<h2 id="磁盘空间分配方法"><a href="#磁盘空间分配方法" class="headerlink" title="磁盘空间分配方法"></a>磁盘空间分配方法</h2><h3 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h3><p>要求每个文件在磁盘上占有一组连续的块</p>
+<p>用于访问连续分配文件所需要的寻道数最小，在确实需要寻道时所需要的寻道时间也最小。</p>
+<h3 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h3><p>每个文件是磁盘块的链表。目录包括文件的第一块的指针和最后一块的指针</p>
+<p>没有外部碎片</p>
+<p>只能有效地用于文件的顺序访问</p>
+<p>指针也需要空间</p>
+<p>可靠性低（指针可能错误）</p>
+<h3 id="文件分配表（FAT）"><a href="#文件分配表（FAT）" class="headerlink" title="文件分配表（FAT）"></a>文件分配表（FAT）</h3><p>每个卷的开始部分用于存储FAT，每块都在该表中有一项，使用与链表相似。</p>
+<h3 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h3><p>每个文件有索引块，第i个条目指向文件的第i个块。</p>
+<p>支持直接方案</p>
+<p>没有外部碎片</p>
+<h2 id="空闲空间管理"><a href="#空闲空间管理" class="headerlink" title="空闲空间管理"></a>空闲空间管理</h2><h3 id="位向量"><a href="#位向量" class="headerlink" title="位向量"></a>位向量</h3><p>每块用一位表示，空闲位为1，已分配为0.</p>
+<p>优点是查找磁盘上第一个空闲块和n个连续空闲块时相对简单和高效</p>
+<p>占用内存大</p>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><h3 id="组"><a href="#组" class="headerlink" title="组"></a>组</h3><p>将n个空闲块的地址存在第一个空闲块中，最后一个块包含另外n个空闲块的地址</p>
+<h3 id="计数"><a href="#计数" class="headerlink" title="计数"></a>计数</h3><p>空闲空间表只记录第一块地址和连续的空闲块的数量n</p>
+<h1 id="磁盘调度"><a href="#磁盘调度" class="headerlink" title="磁盘调度"></a>磁盘调度</h1><p>访问时间包括两个主要部分：<code>寻道时间</code>和<code>旋转延迟</code>。寻道时间是磁臂将磁头移动到包含目标扇区的柱面的时间。旋转延迟是磁盘需要将目标扇区移动到磁头下的时间。</p>
+<h2 id="FCFS调度"><a href="#FCFS调度" class="headerlink" title="FCFS调度"></a>FCFS调度</h2><p>先来先服务</p>
+<h2 id="SSTF调度"><a href="#SSTF调度" class="headerlink" title="SSTF调度"></a>SSTF调度</h2><p>最短寻道时间优先，基本上是一种最短作业优先调度，可能会导致一些请求得不到服务（产生饥饿现象）</p>
+<h2 id="SCAN调度"><a href="#SCAN调度" class="headerlink" title="SCAN调度"></a>SCAN调度</h2><p>磁臂从磁盘的一端向另一端移动，同时当磁头移过每个柱面时，处理位于该柱面上的服务请求。当到达另一端时改变磁头的移动方向。这种算法有时也被称为<code>电梯算法</code></p>
+<h2 id="C-SCAN调度"><a href="#C-SCAN调度" class="headerlink" title="C-SCAN调度"></a>C-SCAN调度</h2><p>提供了更为均匀的等待时间。在磁头移动到另一端时会马上返回到磁盘的开始</p>
+<h2 id="LOOK调度和C-LOOK调度"><a href="#LOOK调度和C-LOOK调度" class="headerlink" title="LOOK调度和C-LOOK调度"></a>LOOK调度和C-LOOK调度</h2><p>磁头只移动到一个方向上的最远请求而不是到某一端</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/05/14/操作系统概念复习总结-2/">操作系统概念复习总结(2)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">uuweidy</a></p>
+        <p><span>发布时间:</span>2019-05-14, 20:51:42</p>
+        <p><span>最后更新:</span>2019-05-14, 20:53:27</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/05/14/操作系统概念复习总结-2/" title="操作系统概念复习总结(2)">http://uuweidy.github.io/2019/05/14/操作系统概念复习总结-2/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://uuweidy.github.io/2019/05/14/操作系统概念复习总结-2/　　作者: uuweidy" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/04/28/Android-Studio的环境搭建/">
+                    Android Studio的环境搭建
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内存管理"><span class="toc-number">1.</span> <span class="toc-text">内存管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概论"><span class="toc-number">1.1.</span> <span class="toc-text">概论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑地址空间与物理地址空间"><span class="toc-number">1.1.1.</span> <span class="toc-text">逻辑地址空间与物理地址空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态加载"><span class="toc-number">1.1.2.</span> <span class="toc-text">动态加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态链接与共享库"><span class="toc-number">1.1.3.</span> <span class="toc-text">动态链接与共享库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续内存分配"><span class="toc-number">1.1.4.</span> <span class="toc-text">连续内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存分配"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">内存分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#碎片"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">碎片</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页"><span class="toc-number">1.2.</span> <span class="toc-text">分页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本方法"><span class="toc-number">1.2.1.</span> <span class="toc-text">基本方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#硬件支持——TLB"><span class="toc-number">1.2.2.</span> <span class="toc-text">硬件支持——TLB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保护"><span class="toc-number">1.2.3.</span> <span class="toc-text">保护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#共享页"><span class="toc-number">1.2.4.</span> <span class="toc-text">共享页*</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页表结构"><span class="toc-number">1.3.</span> <span class="toc-text">页表结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#层次页表"><span class="toc-number">1.3.1.</span> <span class="toc-text">层次页表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#两级分页算法"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">两级分页算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#哈希页表"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">哈希页表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#反向页表"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">反向页表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分段"><span class="toc-number">1.4.</span> <span class="toc-text">分段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#段表"><span class="toc-number">1.4.1.</span> <span class="toc-text">段表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intel平台的逻辑地址到物理地址的转换过程"><span class="toc-number">1.4.2.</span> <span class="toc-text">Intel平台的逻辑地址到物理地址的转换过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#分段机制"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">分段机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分页机制"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">分页机制</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#虚拟内存"><span class="toc-number">2.</span> <span class="toc-text">虚拟内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#按需调页"><span class="toc-number">2.1.</span> <span class="toc-text">按需调页</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">2.1.1.</span> <span class="toc-text">基本概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面置换"><span class="toc-number">2.2.</span> <span class="toc-text">页面置换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Belady异常"><span class="toc-number">2.2.1.</span> <span class="toc-text">Belady异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FIFO页置换"><span class="toc-number">2.2.2.</span> <span class="toc-text">FIFO页置换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最优置换（OPT或MIN）"><span class="toc-number">2.2.3.</span> <span class="toc-text">最优置换（OPT或MIN）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LRU页置换"><span class="toc-number">2.2.4.</span> <span class="toc-text">LRU页置换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#近似LRU页置换"><span class="toc-number">2.2.5.</span> <span class="toc-text">近似LRU页置换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#附加引用位算法"><span class="toc-number">2.2.5.1.</span> <span class="toc-text">附加引用位算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二次机会算法"><span class="toc-number">2.2.5.2.</span> <span class="toc-text">二次机会算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增强型二次机会算法"><span class="toc-number">2.2.5.3.</span> <span class="toc-text">增强型二次机会算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于计数的页置换"><span class="toc-number">2.2.6.</span> <span class="toc-text">基于计数的页置换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最不经常使用页置换算法（LFU）"><span class="toc-number">2.2.6.1.</span> <span class="toc-text">最不经常使用页置换算法（LFU）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最常使用页置换算法（MFU）"><span class="toc-number">2.2.6.2.</span> <span class="toc-text">最常使用页置换算法（MFU）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#帧分配"><span class="toc-number">2.3.</span> <span class="toc-text">帧分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#平均分配"><span class="toc-number">2.3.1.</span> <span class="toc-text">平均分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比例分配"><span class="toc-number">2.3.2.</span> <span class="toc-text">比例分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优先级分配"><span class="toc-number">2.3.3.</span> <span class="toc-text">优先级分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局分配与局部分配"><span class="toc-number">2.3.4.</span> <span class="toc-text">全局分配与局部分配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统颠簸"><span class="toc-number">2.4.</span> <span class="toc-text">系统颠簸</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统颠簸的原因"><span class="toc-number">2.4.1.</span> <span class="toc-text">系统颠簸的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作集合模型"><span class="toc-number">2.4.2.</span> <span class="toc-text">工作集合模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页错误频率"><span class="toc-number">2.4.3.</span> <span class="toc-text">页错误频率</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内存映射文件"><span class="toc-number">2.5.</span> <span class="toc-text">内存映射文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本机制"><span class="toc-number">2.5.1.</span> <span class="toc-text">基本机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内核内存的分配"><span class="toc-number">2.6.</span> <span class="toc-text">内核内存的分配</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Buddy系统"><span class="toc-number">2.6.1.</span> <span class="toc-text">Buddy系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#slab分配"><span class="toc-number">2.6.2.</span> <span class="toc-text">slab分配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他考虑"><span class="toc-number">2.7.</span> <span class="toc-text">其他考虑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#预调页"><span class="toc-number">2.7.1.</span> <span class="toc-text">预调页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页大小"><span class="toc-number">2.7.2.</span> <span class="toc-text">页大小</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件系统管理"><span class="toc-number">3.</span> <span class="toc-text">文件系统管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件"><span class="toc-number">3.1.</span> <span class="toc-text">文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件属性"><span class="toc-number">3.1.1.</span> <span class="toc-text">文件属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件操作"><span class="toc-number">3.1.2.</span> <span class="toc-text">文件操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问方法"><span class="toc-number">3.2.</span> <span class="toc-text">访问方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#顺序访问"><span class="toc-number">3.2.1.</span> <span class="toc-text">顺序访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直接访问"><span class="toc-number">3.2.2.</span> <span class="toc-text">直接访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他访问方式"><span class="toc-number">3.2.3.</span> <span class="toc-text">其他访问方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">3.3.</span> <span class="toc-text">目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单层结构目录"><span class="toc-number">3.3.1.</span> <span class="toc-text">单层结构目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双层结构目录"><span class="toc-number">3.3.2.</span> <span class="toc-text">双层结构目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#树状结构目录"><span class="toc-number">3.3.3.</span> <span class="toc-text">树状结构目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无环图目录"><span class="toc-number">3.3.4.</span> <span class="toc-text">无环图目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通用图目录"><span class="toc-number">3.3.5.</span> <span class="toc-text">通用图目录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件系统实现"><span class="toc-number">4.</span> <span class="toc-text">文件系统实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件系统结构"><span class="toc-number">4.1.</span> <span class="toc-text">文件系统结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟文件系统（VFS）"><span class="toc-number">4.2.</span> <span class="toc-text">虚拟文件系统（VFS）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘空间分配方法"><span class="toc-number">4.3.</span> <span class="toc-text">磁盘空间分配方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#连续分配"><span class="toc-number">4.3.1.</span> <span class="toc-text">连续分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接分配"><span class="toc-number">4.3.2.</span> <span class="toc-text">链接分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件分配表（FAT）"><span class="toc-number">4.3.3.</span> <span class="toc-text">文件分配表（FAT）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引分配"><span class="toc-number">4.3.4.</span> <span class="toc-text">索引分配</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空闲空间管理"><span class="toc-number">4.4.</span> <span class="toc-text">空闲空间管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#位向量"><span class="toc-number">4.4.1.</span> <span class="toc-text">位向量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链表"><span class="toc-number">4.4.2.</span> <span class="toc-text">链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组"><span class="toc-number">4.4.3.</span> <span class="toc-text">组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计数"><span class="toc-number">4.4.4.</span> <span class="toc-text">计数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#磁盘调度"><span class="toc-number">5.</span> <span class="toc-text">磁盘调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FCFS调度"><span class="toc-number">5.1.</span> <span class="toc-text">FCFS调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSTF调度"><span class="toc-number">5.2.</span> <span class="toc-text">SSTF调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SCAN调度"><span class="toc-number">5.3.</span> <span class="toc-text">SCAN调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-SCAN调度"><span class="toc-number">5.4.</span> <span class="toc-text">C-SCAN调度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LOOK调度和C-LOOK调度"><span class="toc-number">5.5.</span> <span class="toc-text">LOOK调度和C-LOOK调度</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/04/28/Android-Studio的环境搭建/" title="下一篇: Android Studio的环境搭建">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/05/14/操作系统概念复习总结-2/">操作系统概念复习总结(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/28/Android-Studio的环境搭建/">Android Studio的环境搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/04/09/操作系统概念复习总结/">操作系统概念复习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/27/数据结构与算法复习总结/">数据结构与算法复习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/03/26/KMP算法学习总结/">KMP算法学习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/04/2018下半年总结/">2018下半年总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/PPT学习笔记/">PPT学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/2018年暑假总结/">2018年暑假总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/感冒了/">感冒了</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/为以后做的准备/">为以后做的准备</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/My-First-Blog/">My First Blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/25/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017-2019 uuweidy
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 3;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a").attr("target", "_blank");
+        $("#scroll a, #toc a").removeAttr("target");
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
